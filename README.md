@@ -12,6 +12,8 @@
 ## カリキュラム外の技術
 - chatGPT API
 - cancancan
+- rails_admin
+- rolify
 - ransack
 
 ## 実行手順
