@@ -1,18 +1,18 @@
 # README
 ## 開発言語
--Ruby3.0.1
--Rails6.1.7
+- Ruby3.0.1
+- Rails6.1.7
 
 ## 就業Termの技術
--devise
--AWS
--メッセージ機能
--フォロー機能
+- devise
+- AWS
+- メッセージ機能
+- フォロー機能
 
 ## カリキュラム外の技術
--chatGPT API
--cancancan
--ransack
+- chatGPT API
+- cancancan
+- ransack
 
 ## 実行手順
 ```
