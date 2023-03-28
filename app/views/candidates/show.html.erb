@@ -1,0 +1,33 @@
+
+<p>
+  <strong>User:</strong>
+  <%= @candidate.user_id %>
+</p>
+
+<p>
+  <strong>Interested category:</strong>
+  <%= @candidate.interested_category %>
+</p>
+
+<p>
+  <strong>Wanted technology:</strong>
+  <%= @candidate.wanted_technology %>
+</p>
+
+<p>
+  <strong>Prefecture:</strong>
+  <%= @candidate.prefecture %>
+</p>
+
+<p>
+  <strong>Profile:</strong>
+  <%= @candidate.profile %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <%= @candidate.image %>
+</p>
+
+<%= link_to 'Edit', edit_candidate_path(@candidate) %> |
+<%= link_to 'Back', candidates_path %>

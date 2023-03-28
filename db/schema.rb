@@ -10,10 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_03_28_022216) do
+ActiveRecord::Schema.define(version: 2023_03_28_071740) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "candidates", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.integer "interested_category"
+    t.string "wanted_technology"
+    t.integer "prefecture"
+    t.text "profile"
+    t.string "image"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_candidates_on_user_id"
+  end
 
   create_table "craftmen", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -31,6 +43,16 @@ ActiveRecord::Schema.define(version: 2023_03_28_022216) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_craftmen_on_user_id"
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.string "image"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_products_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -52,5 +74,7 @@ ActiveRecord::Schema.define(version: 2023_03_28_022216) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "candidates", "users"
   add_foreign_key "craftmen", "users"
+  add_foreign_key "products", "users"
 end

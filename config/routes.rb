@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :candidates
+  resources :products
   root 'craftmen#index'
   resources :craftmen
   

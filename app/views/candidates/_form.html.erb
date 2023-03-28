@@ -1,0 +1,42 @@
+<%= form_with(model: candidate) do |form| %>
+  <% if candidate.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(candidate.errors.count, "error") %> prohibited this candidate from being saved:</h2>
+
+      <ul>
+        <% candidate.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :interested_category %>
+    <%= form.number_field :interested_category %>
+  </div>
+
+  <div class="field">
+    <%= form.label :wanted_technology %>
+    <%= form.text_field :wanted_technology %>
+  </div>
+
+  <div class="field">
+    <%= form.label :prefecture %>
+    <%= form.number_field :prefecture %>
+  </div>
+
+  <div class="field">
+    <%= form.label :profile %>
+    <%= form.text_area :profile %>
+  </div>
+
+  <div class="field">
+    <%= form.label :image %>
+    <%= form.file_field :image %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
