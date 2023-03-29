@@ -5,11 +5,11 @@ class Ability
 
   def initialize(user)
     user ||= User.new # guest user (not logged in)
-    if user.admin?
+    if user.管理者?
       can :manage, :all
-    elsif user.craftman?
+    elsif user.匠?
       can :manage, Craftman, user_id: user.id
-    elsif user.candidate?
+    elsif user.後継候補者?
       can :manage, Candidate, user_id: user.id
     else
       can :read, [Craftman, Candidate]

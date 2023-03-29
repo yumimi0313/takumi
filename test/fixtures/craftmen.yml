@@ -1,0 +1,29 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  category: 1
+  company_name: MyString
+  prefecture: 1
+  manicipal: MyString
+  recruit_status: 1
+  recruit_title: MyString
+  recruit_content: MyText
+  profile: MyText
+  history: MyText
+  technology: MyString
+  image: MyString
+
+two:
+  user: two
+  category: 1
+  company_name: MyString
+  prefecture: 1
+  manicipal: MyString
+  recruit_status: 1
+  recruit_title: MyString
+  recruit_content: MyText
+  profile: MyText
+  history: MyText
+  technology: MyString
+  image: MyString

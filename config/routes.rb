@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  root 'craftmans#index'
+  resources :candidates
+  resources :products
+  root 'craftmen#index'
+  resources :craftmen
   
   #guest log in
   post 'guest_sign_in', to: 'guest_sessions#create'

@@ -1,0 +1,77 @@
+<%= form_with(model: craftman) do |form| %>
+  <% if craftman.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(craftman.errors.count, "error") %> prohibited this craftman from being saved:</h2>
+
+      <ul>
+        <% craftman.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :category %>
+    <%= form.number_field :category %>
+  </div>
+
+  <div class="field">
+    <%= form.label :company_name %>
+    <%= form.text_field :company_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :prefecture %>
+    <%= form.number_field :prefecture %>
+  </div>
+
+  <div class="field">
+    <%= form.label :manicipal %>
+    <%= form.text_field :manicipal %>
+  </div>
+
+  <div class="field">
+    <%= form.label :recruit_status %>
+    <%= form.number_field :recruit_status %>
+  </div>
+
+  <div class="field">
+    <%= form.label :recruit_title %>
+    <%= form.text_field :recruit_title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :recruit_content %>
+    <%= form.text_area :recruit_content %>
+  </div>
+
+  <div class="field">
+    <%= form.label :profile %>
+    <%= form.text_area :profile %>
+  </div>
+
+  <div class="field">
+    <%= form.label :history %>
+    <%= form.text_area :history %>
+  </div>
+
+  <div class="field">
+    <%= form.label :technology %>
+    <%= form.text_field :technology %>
+  </div>
+
+  <div class="field">
+    <%= form.label :image %>
+    <%= form.text_field :image %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
