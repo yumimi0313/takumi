@@ -12,31 +12,36 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :interested_category %>
+    <%= form.label :名前 %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :興味のあるカテゴリー %>
     <%= form.number_field :interested_category %>
   </div>
 
   <div class="field">
-    <%= form.label :wanted_technology %>
+    <%= form.label :希望する技術分野 %>
     <%= form.text_field :wanted_technology %>
   </div>
 
   <div class="field">
-    <%= form.label :prefecture %>
+    <%= form.label :県名 %>
     <%= form.number_field :prefecture %>
   </div>
 
   <div class="field">
-    <%= form.label :profile %>
+    <%= form.label :プロフィール %>
     <%= form.text_area :profile %>
   </div>
 
   <div class="field">
-    <%= form.label :image %>
+    <%= form.label :画像 %>
     <%= form.file_field :image %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit '登録する' %>
   </div>
 <% end %>

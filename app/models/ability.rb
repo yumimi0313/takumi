@@ -5,14 +5,14 @@ class Ability
 
   def initialize(user)
     user ||= User.new # guest user (not logged in)
-    if user.管理者?
+    if user.role == 'admin'
       can :manage, :all
-    elsif user.匠?
-      can :manage, Craftman, user_id: user.id
-    elsif user.後継候補者?
-      can :manage, Candidate, user_id: user.id
-    else
-      can :read, [Craftman, Candidate]
+    # elsif user.role =='craftman'
+    #   can :manage, Craftman, user_id: user.id
+    # elsif user.role == 'candidate'
+    #   can :manage, Candidate, user_id: user.id
+    # else
+    #   can :read, [Craftman, Candidate]
     end
 
     # Define abilities for the user here. For example:

@@ -1,33 +1,33 @@
 
 <p>
-  <strong>User:</strong>
+  <strong>候補者</strong>
   <%= @candidate.user_id %>
 </p>
 
 <p>
-  <strong>Interested category:</strong>
+  <strong>興味のあるカテゴリー:</strong>
   <%= @candidate.interested_category %>
 </p>
 
 <p>
-  <strong>Wanted technology:</strong>
+  <strong>希望する技術分野:</strong>
   <%= @candidate.wanted_technology %>
 </p>
 
 <p>
-  <strong>Prefecture:</strong>
+  <strong>県名:</strong>
   <%= @candidate.prefecture %>
 </p>
 
 <p>
-  <strong>Profile:</strong>
+  <strong>プロフィール:</strong>
   <%= @candidate.profile %>
 </p>
 
 <p>
-  <strong>Image:</strong>
+  <strong>画像:</strong>
   <%= @candidate.image %>
 </p>
 
-<%= link_to 'Edit', edit_candidate_path(@candidate) %> |
-<%= link_to 'Back', candidates_path %>
+<%= link_to '編集する', edit_candidate_path(@candidate) %> |
+<%= link_to '戻る', candidates_path %>

@@ -12,66 +12,61 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :category %>
+    <%= form.label :カテゴリー %>
     <%= form.number_field :category %>
   </div>
 
   <div class="field">
-    <%= form.label :company_name %>
+    <%= form.label :会社名 %>
     <%= form.text_field :company_name %>
   </div>
 
   <div class="field">
-    <%= form.label :prefecture %>
+    <%= form.label :県名 %>
     <%= form.number_field :prefecture %>
   </div>
 
   <div class="field">
-    <%= form.label :manicipal %>
+    <%= form.label :市町村名 %>
     <%= form.text_field :manicipal %>
   </div>
 
   <div class="field">
-    <%= form.label :recruit_status %>
+    <%= form.label :後継者候補募集のステータス %>
     <%= form.number_field :recruit_status %>
   </div>
 
   <div class="field">
-    <%= form.label :recruit_title %>
+    <%= form.label :後継者候補募集のタイトル %>
     <%= form.text_field :recruit_title %>
   </div>
 
   <div class="field">
-    <%= form.label :recruit_content %>
+    <%= form.label :後継者候補募集の詳細 %>
     <%= form.text_area :recruit_content %>
   </div>
 
   <div class="field">
-    <%= form.label :profile %>
+    <%= form.label :プロフィール %>
     <%= form.text_area :profile %>
   </div>
 
   <div class="field">
-    <%= form.label :history %>
+    <%= form.label :匠の事業の歴史 %>
     <%= form.text_area :history %>
   </div>
 
   <div class="field">
-    <%= form.label :technology %>
+    <%= form.label :匠が持つ技術分野 %>
     <%= form.text_field :technology %>
   </div>
 
   <div class="field">
-    <%= form.label :image %>
-    <%= form.text_field :image %>
+    <%= form.label :画像 %>
+    <%= form.file_field :image %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit '登録する' %>
   </div>
 <% end %>

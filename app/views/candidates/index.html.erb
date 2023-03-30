@@ -1,15 +1,15 @@
 
-<h1>Candidates</h1>
+<h1>後継候補者</h1>
 
 <table>
   <thead>
     <tr>
-      <th>User</th>
-      <th>Interested category</th>
-      <th>Wanted technology</th>
-      <th>Prefecture</th>
-      <th>Profile</th>
-      <th>Image</th>
+      <th>名前</th>
+      <th>興味のあるカテゴリー</th>
+      <th>希望する技術分野</th>
+      <th>県名</th>
+      <th>プロフィール</th>
+      <th>画像</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -23,9 +23,9 @@
         <td><%= candidate.prefecture %></td>
         <td><%= candidate.profile %></td>
         <td><%= candidate.image %></td>
-        <td><%= link_to 'Show', candidate %></td>
-        <td><%= link_to 'Edit', edit_candidate_path(candidate) %></td>
-        <td><%= link_to 'Destroy', candidate, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to '詳細', candidate %></td>
+        <td><%= link_to '編集する', edit_candidate_path(candidate) %></td>
+        <td><%= link_to '削除する', candidate, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -33,4 +33,4 @@
 
 <br>
 
-<%= link_to 'New Candidate', new_candidate_path %>
+# <%= link_to 'New Candidate', new_candidate_path %>
