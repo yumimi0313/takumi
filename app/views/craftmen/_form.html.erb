@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= form.label :カテゴリー %>
-    <%= form.number_field :category %>
+    <%= form.select :category, Craftman.categories.keys, include_blank: true %>
   </div>
 
   <div class="field">
@@ -23,7 +23,7 @@
 
   <div class="field">
     <%= form.label :県名 %>
-    <%= form.number_field :prefecture %>
+    <%= form.select :prefecture, Craftman.prefectures.keys, include_blank: true %>
   </div>
 
   <div class="field">
@@ -33,7 +33,7 @@
 
   <div class="field">
     <%= form.label :後継者候補募集のステータス %>
-    <%= form.number_field :recruit_status %>
+    <%= form.select :recruit_status, Craftman.recruit_statuses.keys, include_blank: true %>
   </div>
 
   <div class="field">

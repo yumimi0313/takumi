@@ -18,7 +18,7 @@
 
   <div class="field">
     <%= form.label :興味のあるカテゴリー %>
-    <%= form.number_field :interested_category %>
+    <%= form.select :interested_category, Candidate.interested_categories.keys, include_blank: true %>
   </div>
 
   <div class="field">
@@ -28,7 +28,7 @@
 
   <div class="field">
     <%= form.label :県名 %>
-    <%= form.number_field :prefecture %>
+    <%= form.select :prefecture, Candidate.prefectures.keys, include_blank: true %>
   </div>
 
   <div class="field">
