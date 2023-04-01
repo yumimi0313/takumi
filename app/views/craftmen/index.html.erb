@@ -1,21 +1,16 @@
 
-<h1>Craftmen</h1>
+<h1>匠</h1>
 
 <table>
   <thead>
     <tr>
-      <th>User</th>
-      <th>Category</th>
-      <th>Company name</th>
-      <th>Prefecture</th>
-      <th>Manicipal</th>
-      <th>Recruit status</th>
-      <th>Recruit title</th>
-      <th>Recruit content</th>
-      <th>Profile</th>
-      <th>History</th>
-      <th>Technology</th>
-      <th>Image</th>
+      <th>写真</th>
+      <th>会社名</th>
+      <th>県名</th>
+      <th>市町村名</th>
+      <th>後継者候補募集のステータス</th>
+      <th>後継者候補募集のタイトル</th>
+      <th>プロフィール</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -23,18 +18,13 @@
   <tbody>
     <% @craftmen.each do |craftman| %>
       <tr>
-        <td><%= craftman.user_id %></td>
-        <td><%= craftman.category %></td>
+        <td><%= craftman.image %></td>
         <td><%= craftman.company_name %></td>
         <td><%= craftman.prefecture %></td>
         <td><%= craftman.manicipal %></td>
         <td><%= craftman.recruit_status %></td>
         <td><%= craftman.recruit_title %></td>
-        <td><%= craftman.recruit_content %></td>
         <td><%= craftman.profile %></td>
-        <td><%= craftman.history %></td>
-        <td><%= craftman.technology %></td>
-        <td><%= craftman.image %></td>
         <td><%= link_to 'Show', craftman %></td>
         <td><%= link_to 'Edit', edit_craftman_path(craftman) %></td>
         <td><%= link_to 'Destroy', craftman, method: :delete, data: { confirm: 'Are you sure?' } %></td>

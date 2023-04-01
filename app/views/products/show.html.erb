@@ -1,23 +1,18 @@
 
 <p>
-  <strong>Name:</strong>
+  <strong>Name名前:</strong>
   <%= @product.name %>
 </p>
 
 <p>
-  <strong>Description:</strong>
+  <strong>詳細:</strong>
   <%= @product.description %>
 </p>
 
 <p>
-  <strong>Image:</strong>
+  <strong>画像:</strong>
   <%= @product.image %>
 </p>
 
-<p>
-  <strong>User:</strong>
-  <%= @product.user_id %>
-</p>
-
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
+<%= link_to '編集する', edit_product_path(@product) %> |
+<%= link_to '戻る', products_path %>
