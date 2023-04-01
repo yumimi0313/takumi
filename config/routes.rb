@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
+  root 'craftmen#index'
   resources :candidates
   resources :products
-  root 'craftmen#index'
   resources :craftmen
+  resources :chats
+  get 'search', to: 'chats#search'
   
   #guest log in
   post 'guest_sign_in', to: 'guest_sessions#create'
