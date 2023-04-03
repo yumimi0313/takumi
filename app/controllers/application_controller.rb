@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
-  require "openai"
-  require "dotenv"
-  Dotenv.load
+   require "openai"
+   require "dotenv"
+   Dotenv.load
 
   before_action:set_common_variable
   before_action :configure_permitted_parameters, if: :devise_controller?
@@ -13,6 +13,6 @@ class ApplicationController < ActionController::Base
 
   private
   def set_common_variable
-    @client = OpenAI::Client.new(access_token: ENV["CHATGPT_API_KEY"])
-  end
+     @client = OpenAI::Client.new(access_token: ENV["CHATGPT_API_KEY"])
+   end
 end
