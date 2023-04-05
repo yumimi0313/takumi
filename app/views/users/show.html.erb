@@ -1,0 +1,11 @@
+<h1><%= @user.name %></h1>
+<p>Email: <%= @user.email %></p>
+
+<span id="user_<%= @user.id %>">
+<%= render 'follow_form', user: @user if signed_in? %>
+</span>
+
+<!-- 編集ページへのリンクを現在のユーザーの場合のみ表示 -->
+<% if current_user == @user %>
+  <%= link_to 'プロフィールを編集', edit_user_path(@user) %>
+<% end %>
