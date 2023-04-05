@@ -24,9 +24,11 @@
         <td><%= candidate.profile %></td>
         <td><%= candidate.image %></td>
         <td><%= link_to '詳細', candidate %></td>
-        <td><%= link_to '編集する', edit_candidate_path(candidate) %></td>
-        <td><%= link_to '削除する', candidate, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+        <% if candidate.user == current_user %>
+          <td><%= link_to '編集する', edit_candidate_path(candidate) %></td>
+          <td><%= link_to '削除する', candidate, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+        </tr>
     <% end %>
   </tbody>
 </table>

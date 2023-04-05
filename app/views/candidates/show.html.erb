@@ -1,3 +1,6 @@
+<span id="user_<%= @user.id %>">
+<%= render 'users/follow_form', user: @user if signed_in? %>
+</span>
 
 <p>
   <strong>候補者</strong>

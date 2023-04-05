@@ -5,9 +5,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   
-  has_many :craftmen
+  has_one :craftman
   has_many :products
-  has_many :candidates      
+  has_one :candidate     
   enum role: { craftman: 0, candidate: 1,  admin: 2 }
   
   has_many :active_relationships, foreign_key: 'follower_id', class_name: 'Relationship', dependent: :destroy

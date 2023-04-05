@@ -8,6 +8,7 @@ class CandidatesController < ApplicationController
 
   # GET /candidates/1
   def show
+    @user = @candadate.user
   end
 
   # GET /candidates/new

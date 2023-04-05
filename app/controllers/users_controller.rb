@@ -1,9 +1,11 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_user, only: [:show, :edit, :update]
-  before_action :correct_user, only: [:show, :edit, :update]
+  # before_action :correct_user, only: [:show, :edit, :update]
 
   def show
+    @following = @user.following
+    @followers = @user.followers
   end
 
   def edit
@@ -27,9 +29,9 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  def correct_user
-    unless current_user == @user
-      redirect_to root_path, alert: "他のユーザーの情報にアクセスすることはできません。"
-    end
-  end
+  # def correct_user
+  #   unless current_user == @user
+  #     redirect_to root_path, alert: "他のユーザーの情報にアクセスすることはできません。"
+  #   end
+  # end
 end

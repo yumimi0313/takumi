@@ -8,6 +8,7 @@ class CraftmenController < ApplicationController
 
   # GET /craftmen/1
   def show
+    @user = @craftman.user
   end
 
   # GET /craftmen/new

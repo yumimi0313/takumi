@@ -26,8 +26,10 @@
         <td><%= craftman.recruit_title %></td>
         <td><%= craftman.profile %></td>
         <td><%= link_to 'Show', craftman %></td>
-        <td><%= link_to 'Edit', edit_craftman_path(craftman) %></td>
-        <td><%= link_to 'Destroy', craftman, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if craftman.user == current_user %>
+          <td><%= link_to 'Edit', edit_craftman_path(craftman) %></td>
+          <td><%= link_to 'Destroy', craftman, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
