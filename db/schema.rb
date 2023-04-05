@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_03_30_042947) do
+ActiveRecord::Schema.define(version: 2023_04_04_064944) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,12 @@ ActiveRecord::Schema.define(version: 2023_03_30_042947) do
     t.index ["user_id"], name: "index_craftmen_on_user_id"
   end
 
+  create_table "interviews", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "products", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -54,6 +60,25 @@ ActiveRecord::Schema.define(version: 2023_03_30_042947) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_products_on_user_id"
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.bigint "interview_id", null: false
+    t.text "content"
+    t.text "answer"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["interview_id"], name: "index_questions_on_interview_id"
+  end
+
+  create_table "relationships", force: :cascade do |t|
+    t.integer "follower_id"
+    t.integer "followed_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["followed_id"], name: "index_relationships_on_followed_id"
+    t.index ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
+    t.index ["follower_id"], name: "index_relationships_on_follower_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -78,4 +103,5 @@ ActiveRecord::Schema.define(version: 2023_03_30_042947) do
   add_foreign_key "candidates", "users"
   add_foreign_key "craftmen", "users"
   add_foreign_key "products", "users"
+  add_foreign_key "questions", "interviews"
 end

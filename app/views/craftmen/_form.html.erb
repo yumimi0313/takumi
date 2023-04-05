@@ -12,6 +12,11 @@
   <% end %>
 
   <div class="field">
+    <%= form.label :user_id %>
+    <%= form.hidden_field :user_id, value: current_user.id %>
+  </div>
+
+  <div class="field">
     <%= form.label :カテゴリー %>
     <%= form.select :category, Craftman.categories.keys, include_blank: true %>
   </div>

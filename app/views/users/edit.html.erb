@@ -1,0 +1,19 @@
+<div>
+<%= f.label :email %>
+<%= f.email_field :email %>
+</div>
+
+#パスワード関係の記載する
+<div>
+<%= f.label :profile %>
+<%= f.text_area :profile %>
+</div>
+
+
+<div>
+<%= f.submit '更新' %>
+</div>
+<% end %>
+
+<!-- キャンセルボタン -->
+<%= link_to 'キャンセル', user_path(@user) %>
