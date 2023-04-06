@@ -4,9 +4,11 @@ Rails.application.routes.draw do
   resources :products
   resources :craftmen
   resources :relationships, only: [:create, :destroy]
-  
-  #guest log in
-  post 'guest_sign_in', to: 'guest_sessions#create'
+
+  #message
+  resources :conversations do
+    resources :messages
+  end
   
   #devise
   devise_for :users, controllers: { registrations: 'registrations' }
@@ -14,6 +16,9 @@ Rails.application.routes.draw do
   
   #rails_admin
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  
+  #guest log in
+  # post 'guest_sign_in', to: 'guest_sessions#create'
 
   #letter_open_web
   if Rails.env.development?

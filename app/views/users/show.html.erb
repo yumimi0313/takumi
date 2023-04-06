@@ -5,36 +5,54 @@
 </span>
 
 <h2>フォローしている人</h2>
-<ul>
-  <% @following.each do |user| %>
-    <li>
-      <% if user.role == "cadidate" %>
-        <%= user.name %>
-      <% elsif user.role == "craftman" %>
-        <%= user.name %>
+<table>
+  <tbody>
+    <% @following.each do |user| %>
+      <% if user.id != current_user.id %>
+        <tr>
+          <td>
+            <% if user.role == "cadidate" %>
+              <%= user.name %>
+            <% elsif user.role == "craftman" %>
+              <%= user.name %>
+            <% end %>
+          </td>
+          <td>
+            <span id="user_<%= user.id %>">
+              <%= render 'follow_form', user: user if signed_in? %>
+            </span>
+            <%= link_to "メッセージを送る", conversations_path(sender_id: current_user.id, recipient_id: user.id), method: :post %>
+          </td>
+        </tr>
       <% end %>
-      <span id="user_<%= user.id %>">
-      <%= render 'follow_form', user: user if signed_in? %>
-      </span>
-    </li>
-  <% end %>
-</ul>
+    <% end %>
+  </tbody>
+</table>
 
 <h2>フォローされている人</h2>
-<ul>
-  <% @followers.each do |user| %>
-    <li>
-      <% if user.role == "cadidate" %>
-        <%= user.name %>
-      <% elsif user.role == "craftman" %>
-        <%= user.name %>
-      <% end %>
-      <span id="user_<%= user.id %>">
-      <%= render 'follow_form', user: user if signed_in? %>
-      </span>
-    </li>
-  <% end %>
-</ul>
+<table>
+  <tbody>
+    <% @followers.each do |user| %>
+      <tr>
+        <td>
+          <% if user.role == "cadidate" %>
+            <%= user.name %>
+          <% elsif user.role == "craftman" %>
+            <%= user.name %>
+          <% end %>
+        </td>
+        <td>
+          <span id="user_<%= user.id %>">
+            <%= render 'follow_form', user: user if signed_in? %>
+          </span>
+        </td>
+        <td>
+          <%= link_to "メッセージを送る", conversations_path(sender_id: current_user.id, recipient_id: user.id), method: :post %>
+        </td>
+          </tr>
+    <% end %>
+  </tbody>
+</table>
 
 
 <!-- 編集ページへのリンクを現在のユーザーの場合のみ表示 -->
