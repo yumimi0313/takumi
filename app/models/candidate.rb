@@ -15,4 +15,11 @@ class Candidate < ApplicationRecord
   鹿児島県: 46, 沖縄県: 47 
   }
 
+  def self.ransackable_attributes(auth_object = nil)
+    %w[wanted_technology profile]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    %w[user]
+  end
 end

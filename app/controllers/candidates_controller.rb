@@ -3,12 +3,13 @@ class CandidatesController < ApplicationController
 
   # GET /candidates
   def index
-    @candidates = Candidate.all
+    @q = Candidate.ransack(params[:q])
+    @candidates = @q.result(distinct: true).order("created_at desc")
   end
 
   # GET /candidates/1
   def show
-    @user = @candadate.user
+    @user = @candidate.user
   end
 
   # GET /candidates/new
@@ -54,6 +55,6 @@ class CandidatesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def candidate_params
-      params.require(:candidate).permit(:user_id, :interested_category, :wanted_technology, :prefecture, :profile, :image)
+      params.require(:candidate).permit(:user_id, :name, :interested_category, :wanted_technology, :prefecture, :profile, :image)
     end
 end
