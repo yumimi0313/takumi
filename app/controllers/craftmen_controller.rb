@@ -3,7 +3,8 @@ class CraftmenController < ApplicationController
 
   # GET /craftmen
   def index
-    @craftmen = Craftman.all
+    @q = Craftman.ransack(params[:q])
+    @craftmen = @q.result(distinct: true).order("created_at desc")
   end
 
   # GET /craftmen/1
