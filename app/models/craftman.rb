@@ -1,5 +1,6 @@
 class Craftman < ApplicationRecord
   belongs_to :user
+  has_one_attached :image
 
   enum category: { 稲作: 0, 野菜生産: 1,  果物生産: 2, 水産業: 3, 畜産: 4, 酪農: 5, 食品製造: 6, 飲食店: 7, 工芸品製造: 8 }
   enum prefecture: {     

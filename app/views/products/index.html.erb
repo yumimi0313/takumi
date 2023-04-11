@@ -16,7 +16,11 @@
       <tr>
         <td><%= product.name %></td>
         <td><%= product.description %></td>
-        <td><%= product.image %></td>
+        <td>
+        <% if product.image.attached? %>
+          <%= image_tag product.image.variant(resize_to_limit: [350, 250]) %>
+        <% end %>
+        </td>
         <td><%= link_to '詳細', product %></td>
         <td><%= link_to '編集する', edit_product_path(product) %></td>
         <td><%= link_to '削除する', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>

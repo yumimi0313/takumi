@@ -58,7 +58,9 @@
 
 <p>
   <strong>画像:</strong>
-  <%= @craftman.image %>
+    <% if @craftman.image.attached? %>
+      <%= image_tag @craftman.image.variant(resize_to_limit: [800, 600]) %>
+    <% end %>
 </p>
 
 <%= link_to 'Edit', edit_craftman_path(@craftman) %> |
