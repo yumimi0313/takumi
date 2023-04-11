@@ -20,7 +20,11 @@
   <tbody>
     <% @craftmen.each do |craftman| %>
       <tr>
-        <td><%= craftman.image %></td>
+        <td>
+          <% if craftman.image.attached? %>
+            <%= image_tag craftman.image.variant(resize_to_limit: [350, 250]) %>
+          <% end %>
+        </td>
         <td><%= craftman.company_name %></td>
         <td><%= craftman.prefecture %></td>
         <td><%= craftman.manicipal %></td>

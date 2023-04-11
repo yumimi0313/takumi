@@ -24,7 +24,11 @@
         <td><%= candidate.wanted_technology %></td>
         <td><%= candidate.prefecture %></td>
         <td><%= candidate.profile %></td>
-        <td><%= candidate.image %></td>
+        <td>
+          <% if candidate.image.attached? %>
+            <%= image_tag candidate.image.variant(resize_to_limit: [350, 250]) %>
+          <% end %>
+        </td>
         <td><%= link_to '詳細', candidate %></td>
         <% if candidate.user == current_user %>
           <td><%= link_to '編集する', edit_candidate_path(candidate) %></td>
