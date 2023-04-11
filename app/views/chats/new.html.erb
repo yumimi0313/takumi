@@ -1,0 +1,16 @@
+<h1>Create Chat</h1>
+
+<%= form_with url: chats_path, local: true do |form| %>
+<% box = [] %>
+  <% @questions.each_with_index do |question, index| %>
+    <div>
+     <%= form.hidden_field "questions[#{index}]", :value => question %>
+      <%= form.label "questions[#{index}]", question %>
+      <%= form.text_field "user_input[#{index}]" %>
+    </div>
+  <% end %>
+
+  <%= form.submit "文章生成" %>
+<% end %>
+
+<%= link_to '戻る', root_path %>

@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :craftmen
 
   #chatGPT
-  resources :chats, only: [:index] do
+  resources :chats, only: [:index, :new, :create, :show] do
     post 'search', on: :collection, defaults: { format: :json }
     post 'generated_text', on: :collection, defaults: { format: :json }, as: 'generated_text'
   end
