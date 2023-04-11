@@ -33,6 +33,10 @@ gem 'devise-i18n'
 gem 'rexml'
 gem 'rails_admin'
 gem 'cancancan'
+
+
+
+
 gem 'image_processing'
 
 group :development, :test do
