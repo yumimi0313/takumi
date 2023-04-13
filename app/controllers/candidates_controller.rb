@@ -10,6 +10,7 @@ class CandidatesController < ApplicationController
   # GET /candidates/1
   def show
     @user = @candidate.user
+    @q = Candidate.ransack(params[:q]) 
   end
 
   # GET /candidates/new
@@ -55,6 +56,6 @@ class CandidatesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def candidate_params
-      params.require(:candidate).permit(:user_id, :name, :interested_category, :wanted_technology, :prefecture, :profile, :image)
+      params.require(:candidate).permit(:user_id, :name, :interested_category, :wanted_technology, :prefecture, :profile, images: [])
     end
 end

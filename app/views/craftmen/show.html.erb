@@ -1,67 +1,66 @@
+
+<%= render 'search', q: @q, url: craftmen_path %>
+
 <span id="user_<%= @user.id %>">
 <%= render 'users/follow_form', user: @user if signed_in? %>
 </span>
 
-<p>
-  <strong>匠の詳細:</strong>
-</p>
+<hr class="featurette-divider">
 
-<p>
-  <strong>カテゴリー:</strong>
-  <%= @craftman.category %>
-</p>
-
-<p>
-  <strong>会社名:</strong>
-  <%= @craftman.company_name %>
-</p>
-
-<p>
-  <strong>県名:</strong>
-  <%= @craftman.prefecture %>
-</p>
-
-<p>
-  <strong>市町村名:</strong>
-  <%= @craftman.manicipal %>
-</p>
-
-<p>
-  <strong>後継者候補募集のステータス:</strong>
-  <%= @craftman.recruit_status %>
-</p>
-
-<p>
-  <strong>後継者候補募集のタイトル:</strong>
-  <%= @craftman.recruit_title %>
-</p>
-
-<p>
-  <strong>後継者候補募集の詳細:</strong>
-  <%= @craftman.recruit_content %>
-</p>
-
-<p>
-  <strong>プロフィール:</strong>
-  <%= @craftman.profile %>
-</p>
-
-<p>
-  <strong>匠の事業の歴史:</strong>
-  <%= @craftman.history %>
-</p>
-
-<p>
-  <strong>匠が持つ技術分野:</strong>
-  <%= @craftman.technology %>
-</p>
-
-<p>
-  <strong>画像:</strong>
-    <% if @craftman.image.attached? %>
-      <%= image_tag @craftman.image.variant(resize_to_limit: [800, 600]) %>
+<div class="row featurette">
+  <div class="col-md-7 order-md-2">
+    <h2 class="featurette-heading"><%= @craftman.recruit_title %></h2>
+    </div>
+    <div class="col-md-5 order-md-1">
+    <% if @craftman.images.attached? && @craftman.images.first.present? %>
+    <%= image_tag @craftman.images.first.variant(resize_to_limit: [500, 500]), class: "featurette-image img-fluid mx-auto" %>
     <% end %>
-</p>
+    </div>
+    </div>
+    
+    <hr class="featurette-divider">
+    
+    <div class="row featurette">
+    <div class="col-md-7 order-md-2">
+    <h2 class="featurette-heading"> <span class="text-muted">会社名</span><%= @craftman.company_name %></h2>
+    <p class="lead">県名: <%= @craftman.prefecture %><br>市町村名: <%= @craftman.manicipal %></p>
+    <p class="lead"><%= @craftman.recruit_content %></p>
+  </div>
+  <div class="col-md-5 order-md-1">
+    <% if @craftman.images.attached? && @craftman.images.second.present? %>
+      <%= image_tag @craftman.images.second.variant(resize_to_limit: [500, 500]), class: "featurette-image img-fluid mx-auto" %>
+    <% end %>
+  </div>
+</div>
 
-<%= link_to 'Edit', edit_craftman_path(@craftman) %> |
-<%= link_to 'Back', craftmen_path %>
+<hr class="featurette-divider">
+
+<div class="row featurette">
+  <div class="col-md-7 order-md-2">
+    <h2 class="featurette-heading"><%= @craftman.profile %> <span class="text-muted">プロフィール</span></h2>
+    <p class="lead"><%= @craftman.history %></p>
+  </div>
+  <div class="col-md-5 order-md-1">
+    <% if @craftman.images.attached? && @craftman.images.third.present? %>
+      <%= image_tag @craftman.images.third.variant(resize_to_limit: [500, 500]), class: "featurette-image img-fluid mx-auto" %>
+    <% end %>
+  </div>
+</div>
+
+<hr class="featurette-divider">
+
+<div class="row featurette">
+  <div class="col-md-7 order-md-2">
+    <h2 class="featurette-heading"><%= @craftman.technology %> <span class="text-muted">匠が持つ技術分野</span></h2>
+  </div>
+  <div class="col-md-5 order-md-1">
+    <% if @craftman.images.attached? && @craftman.images.fourth.present? %>
+      <%= image_tag @craftman.images.fourth.variant(resize_to_limit: [500, 500]), class: "featurette-image img-fluid mx-auto" %>
+    <% end %>
+  </div>
+</div>
+
+<hr class="featurette-divider">
+
+<%= link_to 'Edit', edit_craftman_path(@craftman), class: 'btn btn-primary' %> |
+<%= link_to 'Back', craftmen_path, class: 'btn btn-secondary' %>

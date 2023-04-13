@@ -26,9 +26,9 @@
       <% @candidates.each do |candidate| %>
         <div class="col-md-4">
           <div class="card mb-4 shadow-sm">
-            <% if candidate.image.attached? %>
-              <%= image_tag candidate.image.variant(resize_to_limit: [350, 250]), class: 'card-img-top' %>
-            <% end %>
+          <% if candidate.images.attached? && candidates.image.first.present? %>
+          <%= image_tag candidate.images.first.variant(resize_to_limit: [350, 250]), class: "card-img-top" %>
+        <% end %>
             <div class="card-body">
               <h5 class="card-title"><%= candidate.user_id %></h5>
               <p class="card-text"><%= candidate.interested_category %></p>
