@@ -10,6 +10,7 @@ class CraftmenController < ApplicationController
   # GET /craftmen/1
   def show
     @user = @craftman.user
+    @q = Craftman.ransack(params[:q]) 
   end
 
   # GET /craftmen/new
@@ -55,6 +56,6 @@ class CraftmenController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def craftman_params
-      params.require(:craftman).permit(:user_id, :category, :company_name, :prefecture, :manicipal, :recruit_status, :recruit_title, :recruit_content, :profile, :history, :technology, :image)
+      params.require(:craftman).permit(:user_id, :category, :company_name, :prefecture, :manicipal, :recruit_status, :recruit_title, :recruit_content, :profile, :history, :technology, images: [])
     end
 end

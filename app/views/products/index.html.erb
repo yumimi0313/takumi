@@ -17,9 +17,9 @@
         <td><%= product.name %></td>
         <td><%= product.description %></td>
         <td>
-        <% if product.image.attached? %>
-          <%= image_tag product.image.variant(resize_to_limit: [350, 250]) %>
-        <% end %>
+        <% if product.image.attached? && product.image.first.present? %>
+        <%= image_tag product.image.first.variant(resize_to_limit: [350, 250]), class: "card-img-top" %>
+      <% end %>
         </td>
         <td><%= link_to '詳細', product %></td>
         <td><%= link_to '編集する', edit_product_path(product) %></td>

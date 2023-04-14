@@ -1,52 +1,56 @@
 <%= form_with(model: candidate) do |form| %>
-  <% if candidate.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(candidate.errors.count, "error") %> prohibited this candidate from being saved:</h2>
-
-      <ul>
-        <% candidate.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <% if candidate.errors.any? %>
+          <div id="error_explanation" class="alert alert-danger">
+            <h2><%= pluralize(candidate.errors.count, "error") %> prohibited this candidate from being saved:</h2>
+            <ul>
+              <% candidate.errors.each do |error| %>
+                <li><%= error.full_message %></li>
+              <% end %>
+            </ul>
+          </div>
         <% end %>
-      </ul>
+
+        <div class="form-group">
+          <%= form.hidden_field :user_id, value: current_user.id %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :名前 %>
+          <%= form.text_field :name, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :興味のあるカテゴリー %>
+          <%= form.select :interested_category, Candidate.interested_categories.keys, {include_blank: true}, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :希望する技術分野 %>
+          <%= form.text_field :wanted_technology, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :県名 %>
+          <%= form.select :prefecture, Candidate.prefectures.keys, {include_blank: true}, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :プロフィール %>
+          <%= form.text_area :profile, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :images, '画像' %>
+          <%= form.file_field :images, multiple: true, class: "form-control-file" %>
+        </div>
+
+        <div class="form-group">
+          <%= form.submit '登録する', class: "btn btn-primary" %>
+        </div>
+      </div>
     </div>
-  <% end %>
-
-  <div class="field">
-  <%= form.label :user_id %>
-  <%= form.hidden_field :user_id, value: current_user.id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :名前 %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :興味のあるカテゴリー %>
-    <%= form.select :interested_category, Candidate.interested_categories.keys, include_blank: true %>
-  </div>
-
-  <div class="field">
-    <%= form.label :希望する技術分野 %>
-    <%= form.text_field :wanted_technology %>
-  </div>
-
-  <div class="field">
-    <%= form.label :県名 %>
-    <%= form.select :prefecture, Candidate.prefectures.keys, include_blank: true %>
-  </div>
-
-  <div class="field">
-    <%= form.label :プロフィール %>
-    <%= form.text_area :profile %>
-  </div>
-
-  <div class="field">
-    <%= form.label :image, '画像' %>
-    <%= form.file_field :image %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit '登録する' %>
   </div>
 <% end %>
