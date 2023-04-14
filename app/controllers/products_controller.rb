@@ -1,10 +1,7 @@
 class ProductsController < ApplicationController
+  #cancancan読み込みのメソッド
+  load_and_authorize_resource
   before_action :set_product, only: [:show, :edit, :update, :destroy]
-
-  # GET /products
-  def index
-    @products = Product.all
-  end
 
   # GET /products/1
   def show

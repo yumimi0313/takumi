@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'craftmen#index'
   resources :candidates
-  resources :products
+  resources :products, only: [:new, :create, :show, :edit, :update, :destroy]
   resources :craftmen
   resources :relationships, only: [:create, :destroy]
 

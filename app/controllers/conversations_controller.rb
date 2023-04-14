@@ -1,4 +1,6 @@
-class ConversationsController < ApplicationController
+class ConversationsController < ApplicationController  
+  #cancancan読み込みのメソッド
+  load_and_authorize_resource
   before_action :authenticate_user!
   
   def index

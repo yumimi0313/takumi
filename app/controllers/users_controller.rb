@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  #cancancan読み込みのメソッド
+  load_and_authorize_resource
   before_action :authenticate_user!
   before_action :set_user, only: [:show, :edit, :update]
   # before_action :correct_user, only: [:show, :edit, :update]

@@ -1,4 +1,6 @@
 class RelationshipsController < ApplicationController
+  #cancancan読み込みのメソッド
+  load_and_authorize_resource
   before_action :authenticate_user!
   
   def create

@@ -1,4 +1,6 @@
 class CraftmenController < ApplicationController
+  #cancancan読み込みのメソッド
+  load_and_authorize_resource
   before_action :set_craftman, only: [:show, :edit, :update, :destroy]
 
   # GET /craftmen
