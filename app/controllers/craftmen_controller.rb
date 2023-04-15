@@ -29,7 +29,7 @@ class CraftmenController < ApplicationController
     @craftman = Craftman.new(craftman_params)
 
     if @craftman.save
-      redirect_to @craftman, notice: 'Craftman was successfully created.'
+      redirect_to @craftman, notice: '匠を登録しました'
     else
       render :new
     end
@@ -38,7 +38,7 @@ class CraftmenController < ApplicationController
   # PATCH/PUT /craftmen/1
   def update
     if @craftman.update(craftman_params)
-      redirect_to @craftman, notice: 'Craftman was successfully updated.'
+      redirect_to @craftman, notice: '更新しました'
     else
       render :edit
     end

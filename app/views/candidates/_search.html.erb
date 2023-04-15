@@ -1,4 +1,18 @@
-<%= search_form_for @q, url: url do |f| %>
-  <%= f.search_field :wanted_technology_or_profile_cont, class: 'form-control', placeholder: '検索ワード' %>
+<%= search_form_for @q, url: url, html: { class: 'form-inline'  } do |f| %>
+
+  <div class="form-group mx-sm-2">
+    <%= f.label :prefecture_eq, "県名検索", class: 'mr-2' %>
+    <%= f.select :prefecture_eq, Candidate.prefectures.map { |k, v| [k, v] }, { include_blank: '選択してください' }, class: 'form-control' %>
+  </div>
+
+  <div class="form-group mx-sm-2">
+    <%= f.label :interested_category_eq, "カテゴリー検索", class: 'mr-2' %>
+    <%= f.select :interested_category_eq, Candidate.interested_categories.map { |k, v| [k, v] }, { include_blank: '選択してください' }, class: 'form-control' %>
+  </div>
+
+  <div class="form-group mx-sm-2">
+    <%= f.search_field :wanted_technology_or_profile_cont, class: 'form-control', placeholder: '検索ワード' %>
+  </div>
+
   <%= f.submit '検索', class: 'btn btn-primary' %>
 <% end %>

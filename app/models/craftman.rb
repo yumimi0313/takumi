@@ -2,6 +2,13 @@ class Craftman < ApplicationRecord
   belongs_to :user
   has_many_attached :images
 
+  validates :category, presence: true
+  validates :company_name, presence: true, length: { maximum: 255 }
+  validates :prefecture, presence: true  
+  validates :manicipal, presence: true, length: { maximum: 50 }
+  validates :recruit_status, presence: true
+  validates :technology, length: { maximum: 255 }
+  
   enum category: { 稲作: 0, 野菜生産: 1,  果物生産: 2, 水産業: 3, 畜産: 4, 酪農: 5, 食品製造: 6, 飲食店: 7, 工芸品製造: 8 }
   enum prefecture: {     
     北海道: 1, 青森県: 2, 岩手県: 3, 宮城県: 4, 秋田県: 5,
@@ -15,7 +22,7 @@ class Craftman < ApplicationRecord
     佐賀県: 41, 長崎県: 42, 熊本県: 43, 大分県: 44, 宮崎県: 45,
     鹿児島県: 46, 沖縄県: 47 
   }
-  enum recruit_status: { 募集中: 0, CLOSE: 1 }
+  enum recruit_status: { 公開: 0, 非公開: 1 }
 
   def self.ransackable_attributes(auth_object = nil)
     %w[company_name recruit_title recruit_content profile technology prefecture category]

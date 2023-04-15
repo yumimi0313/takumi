@@ -1,18 +1,18 @@
 Rails.application.routes.draw do
   root 'craftmen#index'
-  resources :candidates
-  resources :products, only: [:new, :create, :show, :edit, :update, :destroy]
+
+  #devise
+  devise_for :users, controllers: { registrations: 'registrations' }
+  resources :users, only: [:show]
   resources :craftmen
+  resources :products, only: [:new, :create, :show, :edit, :update, :destroy]
+  resources :candidates
   resources :relationships, only: [:create, :destroy]
 
   #message
   resources :conversations do
     resources :messages
   end
-  
-  #devise
-  devise_for :users, controllers: { registrations: 'registrations' }
-  resources :users, only: [:show, :edit, :update]
   
   #rails_admin
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'

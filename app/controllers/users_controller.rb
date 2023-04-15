@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   #cancancan読み込みのメソッド
   load_and_authorize_resource
   before_action :authenticate_user!
-  before_action :set_user, only: [:show, :edit, :update]
+  before_action :set_user, only: [:show]
   # before_action :correct_user, only: [:show, :edit, :update]
 
   def show
@@ -10,16 +10,16 @@ class UsersController < ApplicationController
     @followers = @user.followers
   end
 
-  def edit
-  end
+  # def edit
+  # end
 
-  def update
-    if @user.update(user_params)
-      redirect_to user_path(@user), notice: 'プロフィールが更新されました。'
-    else
-      render :edit
-    end
-  end
+  # def update
+  #   if @user.update(user_params)
+  #     redirect_to user_path(@user), notice: 'プロフィールが更新されました。'
+  #   else
+  #     render :edit
+  #   end
+  # end
 
   private
 

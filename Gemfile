@@ -35,9 +35,6 @@ gem 'rails_admin'
 gem 'cancancan'
 gem 'ransack'
 
-
-
-
 gem 'image_processing'
 
 group :development, :test do

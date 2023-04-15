@@ -29,7 +29,7 @@ class CandidatesController < ApplicationController
     @candidate = Candidate.new(candidate_params)
 
     if @candidate.save
-      redirect_to @candidate, notice: 'Candidate was successfully created.'
+      redirect_to @candidate, notice: '候補書を登録しました'
     else
       render :new
     end
@@ -38,7 +38,7 @@ class CandidatesController < ApplicationController
   # PATCH/PUT /candidates/1
   def update
     if @candidate.update(candidate_params)
-      redirect_to @candidate, notice: 'Candidate was successfully updated.'
+      redirect_to @candidate, notice: '候補者を更新しました'
     else
       render :edit
     end
