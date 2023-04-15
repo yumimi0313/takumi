@@ -18,7 +18,7 @@ class Craftman < ApplicationRecord
   enum recruit_status: { 募集中: 0, CLOSE: 1 }
 
   def self.ransackable_attributes(auth_object = nil)
-    %w[company_name recruit_title recruit_content profile history technology]
+    %w[company_name recruit_title recruit_content profile technology]
   end
 
   def self.ransackable_associations(auth_object = nil)
