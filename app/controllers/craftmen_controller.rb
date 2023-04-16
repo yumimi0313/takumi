@@ -1,10 +1,12 @@
 class CraftmenController < ApplicationController
+  #cancancan読み込みのメソッド
+  load_and_authorize_resource
   before_action :set_craftman, only: [:show, :edit, :update, :destroy]
 
   # GET /craftmen
   def index
-    @q = Craftman.ransack(params[:q])
-    @craftmen = @q.result(distinct: true).order("created_at desc")
+    @q = Craftman.where(recruit_status: 0).ransack(params[:q])
+    @craftmen = @q.result(distinct: true).where(recruit_status: 0).order("created_at desc")
   end
 
   # GET /craftmen/1
@@ -27,7 +29,7 @@ class CraftmenController < ApplicationController
     @craftman = Craftman.new(craftman_params)
 
     if @craftman.save
-      redirect_to @craftman, notice: 'Craftman was successfully created.'
+      redirect_to @craftman, notice: '匠を登録しました'
     else
       render :new
     end
@@ -36,7 +38,7 @@ class CraftmenController < ApplicationController
   # PATCH/PUT /craftmen/1
   def update
     if @craftman.update(craftman_params)
-      redirect_to @craftman, notice: 'Craftman was successfully updated.'
+      redirect_to @craftman, notice: '更新しました'
     else
       render :edit
     end
@@ -52,6 +54,9 @@ class CraftmenController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_craftman
       @craftman = Craftman.find(params[:id])
+      unless @craftman.recruit_status == '公開' || current_user == @craftman.user
+        redirect_to root_path, alert: 'アクセス権限がありません。'
+      end
     end
 
     # Only allow a list of trusted parameters through.

@@ -2,6 +2,11 @@ class Candidate < ApplicationRecord
   belongs_to :user
   has_many_attached :images
 
+  validates :name, presence: true, length: { maximum: 255 }
+  validates :interested_category, presence: true
+  validates :wanted_technology, length: { maximum: 255 }
+  validates :prefecture, presence: true
+
   enum interested_category: { 稲作: 0, 野菜生産: 1,  果物生産: 2, 水産業: 3, 畜産: 4, 酪農: 5, 食品製造: 6, 飲食店: 7, 工芸品製造: 8 }
   enum prefecture: {     
   北海道: 1, 青森県: 2, 岩手県: 3, 宮城県: 4, 秋田県: 5,
@@ -17,7 +22,7 @@ class Candidate < ApplicationRecord
   }
 
   def self.ransackable_attributes(auth_object = nil)
-    %w[wanted_technology profile]
+    %w[wanted_technology profile prefecture interested_category]
   end
 
   def self.ransackable_associations(auth_object = nil)

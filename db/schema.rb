@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_04_11_032911) do
+ActiveRecord::Schema.define(version: 2023_04_15_121422) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,14 +45,14 @@ ActiveRecord::Schema.define(version: 2023_04_11_032911) do
 
   create_table "candidates", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.integer "interested_category"
+    t.integer "interested_category", null: false
     t.string "wanted_technology"
-    t.integer "prefecture"
+    t.integer "prefecture", null: false
     t.text "profile"
     t.string "image"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "name"
+    t.string "name", null: false
     t.index ["user_id"], name: "index_candidates_on_user_id"
   end
 
@@ -68,26 +68,19 @@ ActiveRecord::Schema.define(version: 2023_04_11_032911) do
 
   create_table "craftmen", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.integer "category"
-    t.string "company_name"
-    t.integer "prefecture"
-    t.string "manicipal"
-    t.integer "recruit_status"
+    t.integer "category", null: false
+    t.string "company_name", null: false
+    t.integer "prefecture", null: false
+    t.string "manicipal", null: false
+    t.integer "recruit_status", null: false
     t.string "recruit_title"
     t.text "recruit_content"
     t.text "profile"
-    t.text "history"
     t.string "technology"
     t.string "image"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_craftmen_on_user_id"
-  end
-
-  create_table "interviews", force: :cascade do |t|
-    t.string "title"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "messages", force: :cascade do |t|
@@ -102,22 +95,13 @@ ActiveRecord::Schema.define(version: 2023_04_11_032911) do
   end
 
   create_table "products", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.text "description"
     t.string "image"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_products_on_user_id"
-  end
-
-  create_table "questions", force: :cascade do |t|
-    t.bigint "interview_id", null: false
-    t.text "content"
-    t.text "answer"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["interview_id"], name: "index_questions_on_interview_id"
   end
 
   create_table "relationships", force: :cascade do |t|
@@ -156,5 +140,4 @@ ActiveRecord::Schema.define(version: 2023_04_11_032911) do
   add_foreign_key "messages", "conversations"
   add_foreign_key "messages", "users"
   add_foreign_key "products", "users"
-  add_foreign_key "questions", "interviews"
 end

@@ -18,12 +18,12 @@
         </div>
 
         <div class="form-group">
-          <%= form.label :名前 %>
+          <%= form.label :＊名前 %>
           <%= form.text_field :name, class: "form-control" %>
         </div>
 
         <div class="form-group">
-          <%= form.label :興味のあるカテゴリー %>
+          <%= form.label :＊興味のあるカテゴリー %>
           <%= form.select :interested_category, Candidate.interested_categories.keys, {include_blank: true}, class: "form-control" %>
         </div>
 
@@ -33,7 +33,7 @@
         </div>
 
         <div class="form-group">
-          <%= form.label :県名 %>
+          <%= form.label :＊県名 %>
           <%= form.select :prefecture, Candidate.prefectures.keys, {include_blank: true}, class: "form-control" %>
         </div>
 

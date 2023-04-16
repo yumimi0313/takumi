@@ -14,7 +14,7 @@
   <body>
     <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">Expand at lg</a>
+      <%= link_to "TSUNAGU", root_path, class: 'navbar-brand' %>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -22,36 +22,45 @@
     <div class="collapse navbar-collapse" id="navbarsExample05">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <%= link_to "匠を探す<span class='sr-only'>(current)</span>".html_safe, craftmen_path, class: 'nav-link' %>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+        <li class="nav-item active">
+          <%= link_to "後継候補者を探す<span class='sr-only'>(current)</span>".html_safe, candidates_path, class: 'nav-link' %>
         </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#">Disabled</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="https://example.com" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+        <li class="nav-item active dropdown">
+          <%= link_to "プロフィール", "#", class: 'nav-link dropdown-toggle', id: 'dropdown05', data: { toggle: 'dropdown' }, aria: { haspopup: 'true', expanded: 'false' } %>
           <div class="dropdown-menu" aria-labelledby="dropdown05">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <a class="dropdown-item" href="#">Something else here</a>
+            <% if current_user.role == 'craftman' %>
+              <%= link_to "詳細", craftman_path(current_user.craftman), class: 'dropdown-item' %>
+              <%= link_to "編集する", edit_craftman_path(current_user.craftman), class: 'dropdown-item' %>
+            <% elsif current_user.role == 'candidate' %>
+              <%= link_to "詳細", candidate_path(current_user.candidate), class: 'dropdown-item' %>
+              <%= link_to "編集する", edit_candidate_path(current_user.candidate), class: 'dropdown-item' %>
+            <% end %>
           </div>
         </li>
+        <li class="nav-item active dropdown">
+        <%= link_to "My情報", "#", class: 'nav-link dropdown-toggle', id: 'dropdown05', data: { toggle: 'dropdown' }, aria: { haspopup: 'true', expanded: 'false' } %>
+        <div class="dropdown-menu" aria-labelledby="dropdown05">
+          <%= link_to "詳細", user_path(current_user), class: 'dropdown-item' %>
+          <%= link_to "編集する", edit_user_registration_path, class: 'dropdown-item' %>
+        </div>
+      </li>      
       </ul>
-      <form class="form-inline my-2 my-md-0">
-        <input class="form-control" type="text" placeholder="Search">
-      </form>
       <ul class="navbar-nav">
         <% if user_signed_in? %>
-          <li class="nav-item">
+          <li class="nav-item active">
             <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link' %>
           </li>
+        <% elsif user.role == 'admin' %>
+          <li class="nav-item active">
+          <%= link_to '管理者画面', rails_admin_path, class: 'nav-link' %>
+          </li>
         <% else %>
-          <li class="nav-item">
+          <li class="nav-item active">
             <%= link_to 'ログイン', new_user_session_path, class: 'nav-link' %>
           </li>
-          <li class="nav-item">
+          <li class="nav-item active">
             <%= link_to 'サインアップ', new_user_registration_path, class: 'nav-link' %>
           </li>
         <% end %>

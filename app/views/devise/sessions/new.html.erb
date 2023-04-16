@@ -12,14 +12,14 @@
           <h2>ログイン画面</h2>
 
           <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'form-signin'}) do |f| %>
-            <div class="form-floating mb-3">
+            <div class="form-group mb-3">
               <%= f.label :email, class: 'form-label' %>
-              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control', placeholder: 'name@example.com' %>
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control no-border', placeholder: 'name@example.com' %>
             </div>
 
-            <div class="form-floating mb-3">
+            <div class="form-group mb-3">
               <%= f.label :password, class: 'form-label' %>
-              <%= f.password_field :password, autocomplete: "current-password", class: 'form-control', placeholder: 'Password' %>
+              <%= f.password_field :password, autocomplete: "current-password", class: 'form-control no-border', placeholder: 'Password' %>
             </div>
 
             <% if devise_mapping.rememberable? %>

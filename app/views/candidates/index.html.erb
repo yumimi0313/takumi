@@ -30,7 +30,7 @@
           <%= image_tag candidate.images.first.variant(resize_to_limit: [350, 250]), class: "card-img-top" %>
         <% end %>
             <div class="card-body">
-              <h5 class="card-title"><%= candidate.user_id %></h5>
+              <h5 class="card-title"><%= candidate.name %></h5>
               <p class="card-text"><%= candidate.interested_category %></p>
               <p class="card-text"><%= candidate.wanted_technology %></p>
               <p class="card-text"><%= candidate.prefecture %></p>
@@ -51,8 +51,4 @@
     </div>
   </div>
 </div>
-
-
-<br>
 </html>
-# <%= link_to 'New Candidate', new_candidate_path %>
