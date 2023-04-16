@@ -5,8 +5,8 @@ class CraftmenController < ApplicationController
 
   # GET /craftmen
   def index
-    @q = Craftman.ransack(params[:q])
-    @craftmen = @q.result(distinct: true).order("created_at desc")
+    @q = Craftman.where(recruit_status: 0).ransack(params[:q])
+    @craftmen = @q.result(distinct: true).where(recruit_status: 0).order("created_at desc")
   end
 
   # GET /craftmen/1
@@ -54,6 +54,9 @@ class CraftmenController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_craftman
       @craftman = Craftman.find(params[:id])
+      unless @craftman.recruit_status == '公開' || current_user == @craftman.user
+        redirect_to root_path, alert: 'アクセス権限がありません。'
+      end
     end
 
     # Only allow a list of trusted parameters through.
