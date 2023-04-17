@@ -1,7 +1,6 @@
 FactoryBot.define do
   factory :user do
     name { "User Name" }
-    #sequenceを使用して一意のメールアドレスを生成
     sequence(:email) { |n| "user#{n}@example.com" }
     password { "password" }
     role { 0 }
@@ -12,9 +11,9 @@ FactoryBot.define do
     end
 
     after(:create) do |user, evaluator|
-      if evaluator.create_craftman
+      if evaluator.create_craftman && user.craftman.blank?
         create(:craftman, user: user)
-      elsif evaluator.create_candidate
+      elsif evaluator.create_candidate && user.candidate.blank?
         create(:candidate, user: user)
       end
     end
