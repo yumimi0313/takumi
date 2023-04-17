@@ -6,10 +6,15 @@
 import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
-import "channels"
 import 'bootstrap';
 import '../stylesheets/application';
-import '../stylesheets/custom.css';
+import "channels"
+// import 'bootstrap';
+// import '../stylesheets/application';
+// import '../stylesheets/custom.css';
+// import '../stylesheets/rails_admin';
+// import "channels"
+
 
 
 Rails.start()
