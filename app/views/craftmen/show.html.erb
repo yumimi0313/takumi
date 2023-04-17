@@ -98,6 +98,7 @@
 <hr class="featurette-divider">
 
 <% if @craftman.user == current_user %>
-  <%= link_to '匠ページを編集する', edit_craftman_path(@craftman), class: 'btn btn-primary' %> |
+  <%= link_to '匠ページを編集する', edit_craftman_path(@craftman), class: 'btn btn-primary' %> 
   <%= link_to '戻る', craftmen_path, class: 'btn btn-secondary' %>
+  <%= link_to '削除', craftman_path(@craftman), method: :delete, class: 'btn btn-sm btn-outline-danger' %>
 <% end %>

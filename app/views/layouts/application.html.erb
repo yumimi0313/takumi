@@ -28,13 +28,21 @@
           <li class="nav-item active dropdown">
             <%= link_to "プロフィール", "#", class: 'nav-link dropdown-toggle', id: 'dropdown05', data: { toggle: 'dropdown' }, aria: { haspopup: 'true', expanded: 'false' } %>
             <div class="dropdown-menu" aria-labelledby="dropdown05">
-              <% if current_user.role == 'craftman' %>
+            <% if current_user.role == 'craftman' %>
+              <% if current_user.craftman.present? %>
                 <%= link_to "詳細", craftman_path(current_user.craftman), class: 'dropdown-item' %>
                 <%= link_to "編集する", edit_craftman_path(current_user.craftman), class: 'dropdown-item' %>
-              <% elsif current_user.role == 'candidate' %>
+              <% else %>
+                <%= link_to "新規登録", new_craftman_path, class: 'dropdown-item' %>
+              <% end %>
+            <% elsif current_user.role == 'candidate' %>
+              <% if current_user.candidate.present? %>
                 <%= link_to "詳細", candidate_path(current_user.candidate), class: 'dropdown-item' %>
                 <%= link_to "編集する", edit_candidate_path(current_user.candidate), class: 'dropdown-item' %>
+              <% else %>
+                <%= link_to "新規登録", new_candidate_path, class: 'dropdown-item' %>
               <% end %>
+            <% end %>
             </div>
           </li>
         <% end %>

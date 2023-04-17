@@ -43,6 +43,7 @@
           <% if @candidate.user == current_user %>
           <%= link_to '編集する', edit_candidate_path(@candidate), class: 'btn btn-primary' %> |
           <%= link_to '戻る', candidates_path, class: 'btn btn-secondary' %>
+          <%= link_to '削除', candidate_path(@candidate), method: :delete, class: 'btn btn-sm btn-outline-danger' %>
           <% end %>
         </div>
       </div>

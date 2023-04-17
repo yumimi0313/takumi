@@ -10,8 +10,8 @@ RSpec.describe "ユーザー機能", type: :system do
         fill_in 'user_email', with: 'test@test.com'
         fill_in 'user_password', with: 'password'
         fill_in 'user_password_confirmation', with: 'password'
-        click_on 'Sign up'
-        expect(page).to have_content '新規登録'
+        click_on '新規登録'
+        expect(page).to have_content 'アカウント登録が完了しました'
       end
     end
   end
