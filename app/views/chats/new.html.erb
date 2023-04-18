@@ -1,0 +1,21 @@
+<div class="container mt-5">
+  <h1>Chat GPTに文章を作ってもらう</h1>
+  <h3 class="mb-4">質問を準備してます、答えはキーワードを入力するなど”簡単に”お答えください。<br>
+  AIに参考の文章を作ってもらい、文章作成を少しでも容易にするための手段です。</h3>
+
+  <%= form_with url: chats_path, local: true, html: {class: 'needs-validation', novalidate: true} do |form| %>
+    <% @questions.each do |question| %>
+      <div class="mb-3">
+        <%= form.label "questions[][question]", question, class: 'form-label' %>
+        <%= form.hidden_field "questions[][question]", value: question %>
+        <%= form.text_field "questions[][user_input]", value: "", class: 'form-control' %>
+      </div>
+    <% end %>
+
+    <div class="mb-3">
+      <%= form.submit "文章生成", class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+
+  <%= link_to '戻る', root_path, class: 'btn btn-secondary' %>
+</div>

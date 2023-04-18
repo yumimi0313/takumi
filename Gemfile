@@ -33,14 +33,10 @@ gem 'devise-i18n'
 gem 'rails_admin'
 gem 'cancancan'
 
-
-
-
-
-
+gem "ruby-openai" #chatGPT
+gem 'dotenv-rails' #環境変数
 gem 'ransack'
 gem 'image_processing'
-
 gem 'rexml'
 
 group :development, :test do
