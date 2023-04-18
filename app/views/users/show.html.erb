@@ -1,6 +1,5 @@
 <div class="container">
   <h1 class="my-4"><%= @user.name %></h1>
-  <p>Email: <%= @user.email %></p>
   <span id="user_<%= @user.id %>">
     <%= render 'follow_form', user: @user if signed_in? %>
   </span>

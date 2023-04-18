@@ -4,7 +4,7 @@ FactoryBot.define do
     company_name { "Craftman Company" }
     prefecture { 1 }
     manicipal { "Manicipal" }
-    recruit_status { 1 }
+    recruit_status { 0 }
     recruit_title { "Recruit Title" }
     recruit_content { "Recruit content text..." }
     profile { "Craftman profile text..." }

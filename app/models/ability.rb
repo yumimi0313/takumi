@@ -14,15 +14,15 @@ class Ability
       can :manage, :all
     elsif user.role == 'craftman'
       can :manage, Craftman, user_id: user.id
-      can :read, [Craftman, Candidate, Product]
+      can :read, [Craftman, Candidate, Product, User]
       if user.craftman.present?
         can :manage, Product, user_id: user.id
       end
     elsif user.role == 'candidate'
       can :manage, Candidate, user_id: user.id
-      can :read, [Craftman, Candidate, Product]
+      can :read, [Craftman, Candidate, Product, User]
     else
-      can :read, [Craftman, Candidate, Product]
+      can :read, [Craftman, Candidate, Product, User]
     end
     
     # ユーザーが自分自身の情報のみを管理できるようにする
