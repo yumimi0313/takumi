@@ -1,33 +1,52 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <div class="card mt-4">
+        <div class="card-body">
+          <h2 class="card-title">名前 <%= @candidate.name %></h2>
+          <hr>
+          
+          <div class="d-inline-block" id="user_<%= @user.id %>">
+            <%= render 'users/follow_form', user: @user if signed_in? %>
+          </div>
+          <div class="d-inline-block ml-2">
+            <%= link_to "メッセージを送る", conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: :post, class: "btn btn-primary" %>
+          </div>
 
-<p>
-  <strong>候補者</strong>
-  <%= @candidate.user_id %>
-</p>
+          <p>
+            <strong>興味のあるカテゴリー:</strong>
+            <%= @candidate.interested_category %>
+          </p>
 
-<p>
-  <strong>興味のあるカテゴリー:</strong>
-  <%= @candidate.interested_category %>
-</p>
+          <p>
+            <strong>希望する技術分野:</strong>
+            <%= @candidate.wanted_technology %>
+          </p>
 
-<p>
-  <strong>希望する技術分野:</strong>
-  <%= @candidate.wanted_technology %>
-</p>
+          <p>
+            <strong>県名:</strong>
+            <%= @candidate.prefecture %>
+          </p>
 
-<p>
-  <strong>県名:</strong>
-  <%= @candidate.prefecture %>
-</p>
+          <p>
+            <strong>プロフィール:</strong>
+            <%= @candidate.profile %>
+          </p>
 
-<p>
-  <strong>プロフィール:</strong>
-  <%= @candidate.profile %>
-</p>
+          <p>
+            <strong>画像:</strong>
+            <% @candidate.images.each do |image| %>
+              <%= image_tag image.variant(resize_to_limit: [500, 500]), class: "img-thumbnail mr-2 mb-2" %>
+            <% end %>
+          </p>
 
-<p>
-  <strong>画像:</strong>
-  <%= @candidate.image %>
-</p>
-
-<%= link_to '編集する', edit_candidate_path(@candidate) %> |
-<%= link_to '戻る', candidates_path %>
+          <% if @candidate.user == current_user %>
+          <%= link_to '編集する', edit_candidate_path(@candidate), class: 'btn btn-primary' %> |
+          <%= link_to '戻る', candidates_path, class: 'btn btn-secondary' %>
+          <%= link_to '削除', candidate_path(@candidate), method: :delete, class: 'btn btn-sm btn-outline-danger' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

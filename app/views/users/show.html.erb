@@ -1,0 +1,74 @@
+<div class="container">
+  <h1 class="my-4"><%= @user.name %></h1>
+  <span id="user_<%= @user.id %>">
+    <%= render 'follow_form', user: @user if signed_in? %>
+  </span>
+
+  <h3 class="my-4">フォローしている人</h3>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <tbody>
+        <% @following.each do |user| %>
+          <% if user.id != current_user.id %>
+            <tr>
+              <td>
+                <% if user.role == "cadidate" %>
+                  <%= user.name %>
+                <% elsif user.role == "craftman" %>
+                  <%= user.name %>
+                <% end %>
+              </td>
+              <td>
+                <div class="d-inline-block" id="user_<%= user.id %>">
+                  <%= render 'follow_form', user: user if signed_in? %>
+                </div>
+                <div class="d-inline-block ml-2">
+                  <%= link_to "メッセージを送る", conversations_path(sender_id: current_user.id, recipient_id: user.id), method: :post, class: "btn btn-primary" %>
+                </div>
+              </td>
+            </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="my-4">フォローされている人</h3>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <tbody>
+        <% @followers.each do |user| %>
+          <tr>
+            <td>
+              <% if user.role == "cadidate" %>
+                <%= user.name %>
+              <% elsif user.role == "craftman" %>
+                <%= user.name %>
+              <% end %>
+            </td>
+            <td>
+              <div class="d-inline-block" id="user_<%= user.id %>">
+                <%= render 'follow_form', user: user if signed_in? %>
+              </div>
+              <div class="d-inline-block ml-2">
+                <%= link_to "メッセージを送る", conversations_path(sender_id: current_user.id, recipient_id: user.id), method: :post, class: "btn btn-primary" %>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 編集ページへのリンクを現在のユーザーの場合のみ表示 -->
+  <% if current_user == @user %>
+    <%= link_to 'プロフィールを編集', edit_user_registration_path, class: "btn btn-secondary my-4" %>
+  <% end %>
+</div>
+
+<style>
+  .table-striped tbody tr:nth-of-type(odd) {
+    background-color: #ffffe0;
+  }
+</style>
+

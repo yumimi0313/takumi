@@ -1,0 +1,2 @@
+console.log("destroy.js.erb is executed");
+$("#follow_form_"+"<%= @user.id %>").html("<%= j(render partial: 'users/follow_form', locals: { user: @user } ) %>");

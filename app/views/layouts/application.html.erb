@@ -6,24 +6,93 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
   </head>
-  <header>
-    <% if user_signed_in? %>
-      <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
-    <% else %>
-      <li><%= link_to 'ログイン', new_user_session_path %></li>
-      <li><%= link_to 'サインアップ', new_user_registration_path %></li>
-    <% end %>
-  </header>
   <body>
+    <header>
+    <nav class="navbar navbar-expand navbar-dark bg-dark">
+      <%= link_to "TSUNAGU", root_path, class: 'navbar-brand' %>
+  
+    <div class="collapse navbar-collapse" id="navbarsExample05">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+        <%= link_to "匠を探す<span class='sr-only'>(current)</span>".html_safe, craftmen_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item active">
+          <%= link_to "後継候補者を探す<span class='sr-only'>(current)</span>".html_safe, candidates_path, class: 'nav-link' %>
+        </li>
+        <% if current_user %>
+          <li class="nav-item active dropdown">
+            <%= link_to "プロフィール", "#", class: 'nav-link dropdown-toggle', id: 'dropdown05', data: { toggle: 'dropdown' }, aria: { haspopup: 'true', expanded: 'false' } %>
+            <div class="dropdown-menu" aria-labelledby="dropdown05">
+            <% if current_user.role == 'craftman' %>
+              <% if current_user.craftman.present? %>
+                <%= link_to "詳細", craftman_path(current_user.craftman), class: 'dropdown-item' %>
+                <%= link_to "編集する", edit_craftman_path(current_user.craftman), class: 'dropdown-item' %>
+              <% else %>
+                <%= link_to "新規登録", new_craftman_path, class: 'dropdown-item' %>
+              <% end %>
+            <% elsif current_user.role == 'candidate' %>
+              <% if current_user.candidate.present? %>
+                <%= link_to "詳細", candidate_path(current_user.candidate), class: 'dropdown-item' %>
+                <%= link_to "編集する", edit_candidate_path(current_user.candidate), class: 'dropdown-item' %>
+              <% else %>
+                <%= link_to "新規登録", new_candidate_path, class: 'dropdown-item' %>
+              <% end %>
+            <% end %>
+            </div>
+          </li>
+        <% end %>
+        <% if current_user %>
+          <li class="nav-item active dropdown">
+            <%= link_to "My情報", "#", class: 'nav-link dropdown-toggle', id: 'dropdown05', data: { toggle: 'dropdown' }, aria: { haspopup: 'true', expanded: 'false' } %>
+            <div class="dropdown-menu" aria-labelledby="dropdown05">
+              <%= link_to "詳細", user_path(current_user), class: 'dropdown-item' %>
+              <%= link_to "編集する", edit_user_registration_path, class: 'dropdown-item' %>
+            </div>
+          </li>
+        <% end %>           
+      </ul>
+      <ul class="navbar-nav">
+        <% if user_signed_in? %>
+          <li class="nav-item active">
+            <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link' %>
+          </li>
+          <% if current_user.present? && current_user.role == 'admin' %>
+            <li class="nav-item active">
+            <%= link_to '管理者画面', rails_admin_path, class: 'nav-link' %>
+            </li>
+          <% end %>
+        <% else %>
+          <li class="nav-item active">
+            <%= link_to 'ログイン', new_user_session_path, class: 'nav-link' %>
+          </li>
+          <li class="nav-item active">
+            <%= link_to 'サインアップ', new_user_registration_path, class: 'nav-link' %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </nav>
+  
+
+    </header>
+
     <% if notice %>
       <p class="alert alert-notice"><%= notice %></p>
     <% end %>
     <% if alert %>
       <p class="alert alert-error"><%= alert %></p>
     <% end %>
+
     <%= yield %>
+
+    <footer>
+    <!-- ここにフッターを実装 -->
+    </footer>
+
   </body>
 </html>

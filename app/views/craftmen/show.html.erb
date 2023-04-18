@@ -1,61 +1,108 @@
-<p>
-  <strong>匠の詳細:</strong>
-</p>
 
-<p>
-  <strong>カテゴリー:</strong>
-  <%= @craftman.category %>
-</p>
+<br/ ><%= render 'search', q: @q, url: craftmen_path %>
 
-<p>
-  <strong>会社名:</strong>
-  <%= @craftman.company_name %>
-</p>
+<hr class="featurette-divider">
 
-<p>
-  <strong>県名:</strong>
-  <%= @craftman.prefecture %>
-</p>
+<div class="d-inline-block" id="user_<%= @user.id %>">
+<%= render 'users/follow_form', user: @user if signed_in? %>
+</div>
 
-<p>
-  <strong>市町村名:</strong>
-  <%= @craftman.manicipal %>
-</p>
+<% if user_signed_in? %>
+  <div class="d-inline-block ml-2">
+    <%= link_to "メッセージを送る", conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: :post, class: "btn btn-primary" %>
+  </div>
+<% end %>
 
-<p>
-  <strong>後継者候補募集のステータス:</strong>
-  <%= @craftman.recruit_status %>
-</p>
 
-<p>
-  <strong>後継者候補募集のタイトル:</strong>
-  <%= @craftman.recruit_title %>
-</p>
+<div class="row featurette">
+  <div class="col-md-7 order-md-2">
+    <h2 class="featurette-heading"><%= @craftman.recruit_title %></h2>
+    </div>
+    <div class="col-md-5 order-md-1">
+    <% if @craftman.images.attached? && @craftman.images.first.present? %>
+    <%= image_tag @craftman.images.first.variant(resize_to_limit: [500, 500]), class: "featurette-image img-fluid mx-auto" %>
+    <% end %>
+    </div>
+    </div>
+    
+    <hr class="featurette-divider">
+    
+    <div class="row featurette">
+    <div class="col-md-7 order-md-2">
+    <h2 class="featurette-heading"> <span class="text-muted">会社名</span><%= @craftman.company_name %></h2>
+    <p class="lead">県名: <%= @craftman.prefecture %><br>市町村名: <%= @craftman.manicipal %></p>
+    <p class="lead"><%= @craftman.recruit_content %></p>
+  </div>
+  <div class="col-md-5 order-md-1">
+    <% if @craftman.images.attached? && @craftman.images.second.present? %>
+      <%= image_tag @craftman.images.second.variant(resize_to_limit: [500, 500]), class: "featurette-image img-fluid mx-auto" %>
+    <% end %>
+  </div>
+</div>
 
-<p>
-  <strong>後継者候補募集の詳細:</strong>
-  <%= @craftman.recruit_content %>
-</p>
+<hr class="featurette-divider">
 
-<p>
-  <strong>プロフィール:</strong>
-  <%= @craftman.profile %>
-</p>
+<div class="row featurette">
+  <div class="col-md-7 order-md-2">
+    <h2 class="featurette-heading"><%= @craftman.profile %> <span class="text-muted">プロフィール</span></h2>
+  </div>
+  <div class="col-md-5 order-md-1">
+    <% if @craftman.images.attached? && @craftman.images.third.present? %>
+      <%= image_tag @craftman.images.third.variant(resize_to_limit: [500, 500]), class: "featurette-image img-fluid mx-auto" %>
+    <% end %>
+  </div>
+</div>
 
-<p>
-  <strong>匠の事業の歴史:</strong>
-  <%= @craftman.history %>
-</p>
+<hr class="featurette-divider">
 
-<p>
-  <strong>匠が持つ技術分野:</strong>
-  <%= @craftman.technology %>
-</p>
+<div class="row featurette">
+  <div class="col-md-7 order-md-2">
+    <h2 class="featurette-heading"><%= @craftman.technology %> <span class="text-muted">匠が持つ技術分野</span></h2>
+  </div>
+  <div class="col-md-5 order-md-1">
+    <% if @craftman.images.attached? && @craftman.images.fourth.present? %>
+      <%= image_tag @craftman.images.fourth.variant(resize_to_limit: [500, 500]), class: "featurette-image img-fluid mx-auto" %>
+    <% end %>
+  </div>
+</div>
 
-<p>
-  <strong>画像:</strong>
-  <%= @craftman.image %>
-</p>
+<hr class="featurette-divider">
 
-<%= link_to 'Edit', edit_craftman_path(@craftman) %> |
-<%= link_to 'Back', craftmen_path %>
+<!--  ユーザー関連付けられた製品一覧 -->
+<h2 class="mt-5">製品一覧　<%= link_to '新規登録', new_product_path, class: 'btn btn-sm btn-outline-secondary' %></h2>
+<div class="album py-5 bg-light">
+  <div class="container">
+    <div class="row">
+      <% @user.products.each do |product| %>
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="product-images">
+              <% if product.images.attached? && product.images.first.present? %>
+                <%= image_tag product.images.first.variant(resize_to_limit: [300, 300]), class: "card-img-top mb-2" %>
+              <% end %>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title"><%= product.name %></h5>
+              <p class="card-text"><%= product.description %></p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <%= link_to '詳細', product_path(product), class: 'btn btn-sm btn-outline-secondary' %>
+                  <%= link_to '編集', edit_product_path(product), class: 'btn btn-sm btn-outline-secondary' %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+<hr class="featurette-divider">
+
+<% if @craftman.user == current_user %>
+  <%= link_to '匠ページを編集する', edit_craftman_path(@craftman), class: 'btn btn-primary' %> 
+  <%= link_to '戻る', craftmen_path, class: 'btn btn-secondary' %>
+  <%= link_to '削除', craftman_path(@craftman), method: :delete, class: 'btn btn-sm btn-outline-danger' %>
+<% end %>

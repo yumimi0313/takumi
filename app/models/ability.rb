@@ -5,15 +5,43 @@ class Ability
 
   def initialize(user)
     user ||= User.new # guest user (not logged in)
+
+    can :show, Craftman do |craftman|
+      craftman.recruit_status == '公開' || (user.present? && user == craftman.user)
+    end
+    
     if user.role == 'admin'
       can :manage, :all
-    # elsif user.role =='craftman'
-    #   can :manage, Craftman, user_id: user.id
-    # elsif user.role == 'candidate'
-    #   can :manage, Candidate, user_id: user.id
-    # else
-    #   can :read, [Craftman, Candidate]
+    elsif user.role == 'craftman'
+      can :manage, Craftman, user_id: user.id
+      can :read, [Craftman, Candidate, Product, User]
+      if user.craftman.present?
+        can :manage, Product, user_id: user.id
+      end
+    elsif user.role == 'candidate'
+      can :manage, Candidate, user_id: user.id
+      can :read, [Craftman, Candidate, Product, User]
+    else
+      can :read, [Craftman, Candidate, Product, User]
     end
+    
+    # ユーザーが自分自身の情報のみを管理できるようにする
+    can :manage, User, id: user.id
+
+    # Relationship（フォロー機能）の権限設定
+    can [:create, :destroy], Relationship, follower_id: user.id
+
+    # Conversation（メッセージ機能）の権限設定
+    can :create, Conversation, sender_id: user.id, recipient_id: user.id
+    can :manage, Conversation, sender_id: user.id
+    can :manage, Conversation, recipient_id: user.id
+
+    # Message（メッセージ機能）の権限設定
+    can :create, Message do |message|
+      conversation = message.conversation
+      conversation.sender_id == user.id || conversation.recipient_id == user.id
+    end
+
 
     # Define abilities for the user here. For example:
     #

@@ -5,15 +5,13 @@
 
 ## 就業Termの技術
 - devise
-- AWS
+- rails_admin
+- cancancan
 - メッセージ機能
 - フォロー機能
 
 ## カリキュラム外の技術
 - chatGPT API
-- cancancan
-- rails_admin
-- rolify
 - ransack
 
 ## 実行手順
