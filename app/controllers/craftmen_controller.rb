@@ -47,7 +47,7 @@ class CraftmenController < ApplicationController
   # DELETE /craftmen/1
   def destroy
     @craftman.destroy
-    redirect_to craftmen_url, notice: 'Craftman was successfully destroyed.'
+    redirect_to craftmen_url, notice: '削除しました'
   end
 
   private

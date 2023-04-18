@@ -6,14 +6,33 @@ ja:
       craftman: 匠
       user: ユーザー
     attributes:
-      craftman:
-        # title: タイトル
-        # content: 内容
-      user:
+      craftman: 
+        category: カテゴリー
+        company_name: 会社名
+        prefecture: 県名
+        manicipal: 市町村
+        recruit_status: 公開・非公開設定
+        recruit_title: 後継者募集時のタイトル
+        recruit_content: 後継者募集時の内容
+        profile: プロフィール
+        technology: 匠の技術分野
+        image: 画像
+      user: 
         title: タイトル
         name: 名前
+        role: 登録
         email: メールアドレス
         current_password: 現在のパスワード
         password: パスワード
         password_confirmation: 確認用パスワード
         remember_me: ログインを記憶
+      candidate:
+        interested_category: 興味のあるカテゴリー
+        wanted_technology: 希望する技術分野
+        prefecture: 県名
+        profile: プロフィール
+        image: 画像
+      products:
+        name: 名前
+        description: 詳細
+        image: 画像

@@ -47,7 +47,7 @@ class CandidatesController < ApplicationController
   # DELETE /candidates/1
   def destroy
     @candidate.destroy
-    redirect_to candidates_url, notice: 'Candidate was successfully destroyed.'
+    redirect_to candidates_url, notice: '削除しました'
   end
 
   private

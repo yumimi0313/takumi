@@ -39,7 +39,7 @@ class ProductsController < ApplicationController
   # DELETE /products/1
   def destroy
     @product.destroy
-    redirect_to products_url, notice: 'Product was successfully destroyed.'
+    redirect_to root_path, notice: '製品を削除しました'
   end
 
   private

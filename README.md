@@ -7,7 +7,6 @@
 - devise
 - rails_admin
 - cancancan
-- AWS
 - メッセージ機能
 - フォロー機能
 

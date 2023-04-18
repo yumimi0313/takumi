@@ -1,9 +1,6 @@
 class MessagesController < ApplicationController
   #cancancan読み込みのメソッド
-  load_and_authorize_resource
-  before_action do
-    @conversation = Conversation.find(params[:conversation_id])
-  end
+  before_action :load_conversation_and_authorize
 
   def index
     @messages = @conversation.messages
@@ -39,5 +36,10 @@ class MessagesController < ApplicationController
 
   def message_params
     params.require(:message).permit(:body, :user_id)
+  end
+
+  def load_conversation_and_authorize
+    @conversation = Conversation.find(params[:conversation_id])
+    authorize! :read, @conversation
   end
 end
