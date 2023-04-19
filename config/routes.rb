@@ -13,11 +13,20 @@ Rails.application.routes.draw do
   # get 'search', to: 'chats#search'
   
   #guest log in
-  post 'guest_sign_in', to: 'guest_sessions#create'
+  # post 'guest_sign_in', to: 'guest_sessions#create'
   
 
   #devise
-  devise_for :users, controllers: { registrations: 'registrations' }
+  devise_for :users, controllers: {
+    registrations: 'registrations',
+    sessions: 'users/sessions'
+  }
+  devise_scope :user do
+    post 'users/guest_admin_sign_in', to: 'users/sessions#guest_admin_sign_in'
+    post 'users/guest_craftman_sign_in', to: 'users/sessions#guest_craftman_sign_in'
+    post 'users/guest_candidate_sign_in', to: 'users/sessions#guest_candidate_sign_in'
+  end
+  
   resources :users, only: [:show]
   resources :craftmen
   resources :products, only: [:new, :create, :show, :edit, :update, :destroy]

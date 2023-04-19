@@ -34,6 +34,10 @@
             </div>
           <% end %>
 
+          <%= link_to "ゲスト管理者ログイン", users_guest_admin_sign_in_path, method: :post %><br/ >
+          <%= link_to "ゲスト匠（事業者）ログイン", users_guest_craftman_sign_in_path, method: :post %><br/ >
+          <%= link_to "ゲスト候補者ログイン", users_guest_candidate_sign_in_path, method: :post %><br/ >
+          
           <%= render "devise/shared/links" %>
         </div>
       </div>

@@ -32,6 +32,7 @@
                 <% if current_user.craftman.present? %>
                   <%= link_to "詳細", craftman_path(current_user.craftman), class: 'dropdown-item' %>
                   <%= link_to "編集する", edit_craftman_path(current_user.craftman), class: 'dropdown-item' %>
+                  <%= link_to 'chatGPTで文章作成アシスト', new_chat_path, class: 'dropdown-item' %>
                 <% else %>
                   <%= link_to "新規登録", new_craftman_path, class: 'dropdown-item' %>
                 <% end %>
