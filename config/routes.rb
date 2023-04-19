@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'craftmen#index'
+  root 'tops#index'
   resources :candidates
   resources :products
   resources :craftmen
