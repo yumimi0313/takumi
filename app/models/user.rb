@@ -36,4 +36,28 @@ class User < ApplicationRecord
   def unfollow!(other_user)
     active_relationships.find_by(followed_id: other_user.id).destroy
   end
+
+  def self.guest_admin
+    find_or_create_by!(email: 'guest_admin@example.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.name = "ゲストユーザー(管理者)"
+      user.role = "admin"
+    end
+  end
+
+  def self.guest_craftman
+    find_or_create_by!(email: 'guest_craftman@example.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.name = "ゲストユーザー(匠(事業者))"
+      user.role = "craftman"
+    end
+  end 
+
+  def self.guest_candidate
+    find_or_create_by!(email: 'guest_candidate@example.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.name = "ゲストユーザー(管理者)"
+      user.role = "candidate"
+    end
+  end 
 end

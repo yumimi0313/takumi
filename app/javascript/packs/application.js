@@ -9,7 +9,7 @@ import * as ActiveStorage from "@rails/activestorage"
 import 'bootstrap';
 import '../stylesheets/application';
 import '../stylesheets/custom.css';
-import '../stylesheets/rails_admin';
+import '../stylesheets/rails_admin.scss';
 import "channels"
 
 

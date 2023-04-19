@@ -10,10 +10,6 @@
 <div class="container">
 <h1 class="jumbotron-heading">TSUNAGU</h1>
 <p class="lead text-muted">繋がり</p>
-<p>
-<a href="#" class="btn btn-primary my-2">Main call to action</a>
-<a href="#" class="btn btn-secondary my-2">Secondary action</a>
-</p>
 </div>
 </section>
 
@@ -25,7 +21,7 @@
       <% @candidates.each do |candidate| %>
         <div class="col-md-4">
           <div class="card mb-4 shadow-sm">
-          <% if candidate.images.attached? && candidates.image.first.present? %>
+          <% if candidate.images.attached? && candidate.images.first.present? %>
           <%= image_tag candidate.images.first.variant(resize_to_limit: [350, 250]), class: "card-img-top" %>
         <% end %>
             <div class="card-body">
