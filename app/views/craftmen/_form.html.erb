@@ -4,8 +4,8 @@
       <div class="col-md-8">
         <% if craftman.errors.any? %>
           <div id="error_explanation" class="alert alert-danger">
-            <h2><%= pluralize(craftman.errors.count, "error") %> prohibited this craftman from being saved:</h2>
-            <ul>
+          <h2><%= t("activerecord.errors.template.header", model: Craftman.model_name.human, count: craftman.errors.count) %></h2>
+          <ul>
               <% craftman.errors.each do |error| %>
                 <li><%= error.full_message %></li>
               <% end %>

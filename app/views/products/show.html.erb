@@ -1,3 +1,5 @@
+<h3>製品の詳細</h3>
+
 <div class="container mt-5">
   <div class="row">
     <div class="col-md-8 offset-md-2">
@@ -11,7 +13,6 @@
           </p>
 
           <p class="card-text">
-          <strong>画像:</strong>
           <% if @product.images.attached? %>
             <% @product.images.each do |image| %>
               <%= image_tag image.variant(resize_to_limit: [500, 500]), class: "d-block w-100 img-fluid carousel-image" %>

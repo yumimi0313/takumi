@@ -4,8 +4,8 @@
       <div class="col-md-8">
         <% if candidate.errors.any? %>
           <div id="error_explanation" class="alert alert-danger">
-            <h2><%= pluralize(candidate.errors.count, "error") %> prohibited this candidate from being saved:</h2>
-            <ul>
+          <h2><%= t("activerecord.errors.template.header", model: Candidate.model_name.human, count: candidate.errors.count) %></h2>
+          <ul>
               <% candidate.errors.each do |error| %>
                 <li><%= error.full_message %></li>
               <% end %>

@@ -3,7 +3,7 @@ ja:
     models:
       product: 匠の逸品
       candidate: 後継候補者
-      craftman: 匠
+      craftman: 匠（事業者）
       user: ユーザー
       message: メッセージ
       conversation: 会話
@@ -38,7 +38,10 @@ ja:
         prefecture: 県名
         profile: プロフィール
         image: 画像
-      products:
+        name: 名前
+      product:
         name: 名前
         description: 詳細
         image: 画像
+      message:
+        body: 内容

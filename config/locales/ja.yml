@@ -1,4 +1,3 @@
----
 ja:
   activerecord:
     errors:
@@ -7,6 +6,10 @@ ja:
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
+      template:
+        header:
+          one: "%{model}に1つのエラーがあります"
+          other: "%{model}に%{count}個のエラーがあります"
   date:
     abbr_day_names:
     - 日
@@ -185,3 +188,48 @@ ja:
     roles:
       craftman: 匠
       candidate: 後継候補者
+  models:
+      product: 匠の逸品
+      candidate: 後継候補者
+      craftman: 匠（事業者）
+      user: ユーザー
+      message: メッセージ
+      conversation: 会話
+      relationship: リレーションシップ
+      active_storage/blob: "添付ファイル"
+      active_storage/attachment: "添付"
+      active_storage/variant_record: "バリアント"
+  attributes:
+    craftman: 
+      category: カテゴリー
+      company_name: 会社名
+      prefecture: 県名
+      manicipal: 市町村
+      recruit_status: 公開・非公開設定
+      recruit_title: 後継者募集時のタイトル
+      recruit_content: 後継者募集時の内容
+      profile: プロフィール
+      technology: 匠の技術分野
+      image: 画像
+    user: 
+      title: タイトル
+      name: 名前
+      role: 登録
+      email: メールアドレス
+      current_password: 現在のパスワード
+      password: パスワード
+      password_confirmation: 確認用パスワード
+      remember_me: ログインを記憶
+    candidate:
+      interested_category: 興味のあるカテゴリー
+      wanted_technology: 希望する技術分野
+      prefecture: 県名
+      profile: プロフィール
+      image: 画像
+      name: 名前
+    product:
+      name: 名前
+      description: 詳細
+      image: 画像
+    message:
+      body: 内容

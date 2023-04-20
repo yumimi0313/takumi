@@ -17,8 +17,8 @@ class User < ApplicationRecord
   has_many :followers, through: :passive_relationships, source: :follower
 
   validates :name, presence: true, length: { maximum: 255 }
-  validates :email, presence: true, length: { maximum: 255 }
-  validates :encrypted_password, presence: true, length: { minimum: 6, maximum: 255 }
+  validates :email, presence: true, length: { maximum: 255 }, format: { with: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i }
+  validates :password, presence: true, length: { minimum: 6, maximum: 255 }
   validates :role, presence: true
   
   #指定のユーザをフォローする
@@ -56,7 +56,7 @@ class User < ApplicationRecord
   def self.guest_candidate
     find_or_create_by!(email: 'guest_candidate@example.com') do |user|
       user.password = SecureRandom.urlsafe_base64
-      user.name = "ゲストユーザー(管理者)"
+      user.name = "ゲストユーザー(候補者)"
       user.role = "candidate"
     end
   end 
