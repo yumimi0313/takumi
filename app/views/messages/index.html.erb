@@ -26,7 +26,14 @@
   <div class="form-group">
     <%= f.label :body, 'メッセージ', class: 'sr-only' %>
     <%= f.text_area :body, class: "form-control", rows: 3 %>
-  </div>
+    <% if @message.errors.any? %>
+      <div class="text-danger">
+        <% @message.errors.full_messages.each do |message| %>
+          <%= message %>
+        <% end %>
+      </div>
+    <% end %>
+    </div>
   <%= f.text_field :user_id, value: current_user.id, type: "hidden" %>
   <div>
     <%= f.submit "メッセージを送る", class: 'btn btn-primary' %>

@@ -9,9 +9,12 @@
           <div class="d-inline-block" id="user_<%= @user.id %>">
             <%= render 'users/follow_form', user: @user if signed_in? %>
           </div>
-          <div class="d-inline-block ml-2">
-            <%= link_to "メッセージを送る", conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: :post, class: "btn btn-primary" %>
-          </div>
+          <% if user_signed_in? %>
+            <div class="d-inline-block ml-2">
+              <%= lin
+              k_to "メッセージを送る", conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: :post, class: "btn btn-primary" %>
+            </div>
+          <% end %>
 
           <p>
             <strong>興味のあるカテゴリー:</strong>
