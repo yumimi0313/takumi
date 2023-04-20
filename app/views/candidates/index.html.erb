@@ -34,8 +34,8 @@
                 <div class="btn-group">
                   <%= link_to '詳細', candidate, class: 'btn btn-sm btn-outline-secondary' %>
                   <% if candidate.user == current_user %>
-                    <%= link_to '編集する', edit_candidate_path(candidate), class: 'btn btn-sm btn-outline-secondary' %>
-                    <%= link_to '削除する', candidate, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-outline-secondary' %>
+                    <%= link_to '編集', edit_candidate_path(candidate), class: 'btn btn-sm btn-outline-secondary' %>
+                    <%= link_to '削除', candidate, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-outline-secondary' %>
                   <% end %>
                 </div>
               </div>
