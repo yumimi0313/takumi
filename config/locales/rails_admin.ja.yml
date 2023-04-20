@@ -45,6 +45,7 @@ ja:
       up: "上"
       down: "下"
       navigation: "ナビゲーション"
+      active_storage: "アクティブストレージ"
       root_navigation: "アクション"
       navigation_static_label: "リンク"
       log_out: "ログアウト"

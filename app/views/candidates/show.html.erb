@@ -1,3 +1,7 @@
+
+<h3>候補者の詳細</h3>
+
+
 <div class="container">
   <div class="row">
     <div class="col-md-8 offset-md-2">
@@ -11,8 +15,7 @@
           </div>
           <% if user_signed_in? %>
             <div class="d-inline-block ml-2">
-              <%= lin
-              k_to "メッセージを送る", conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: :post, class: "btn btn-primary" %>
+              <%= link_to "メッセージを送る", conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: :post, class: "btn btn-primary" %>
             </div>
           <% end %>
 
@@ -37,7 +40,6 @@
           </p>
 
           <p>
-            <strong>画像:</strong>
             <% @candidate.images.each do |image| %>
               <%= image_tag image.variant(resize_to_limit: [500, 500]), class: "img-thumbnail mr-2 mb-2" %>
             <% end %>

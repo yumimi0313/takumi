@@ -2,42 +2,49 @@
   <%= link_to '以前のメッセージ', '?m=all', class: 'btn btn-link' %>
 <% end %>
 
-<div class="card mb-4">
-  <div class="card-body">
-    <% @messages.each do |message| %>
-      <% if message.body.present? %>
-        <div class="d-flex justify-content-between mb-3">
-          <div>
-            <strong><%= message.user.name %></strong> <%= message.message_time %>
-          </div>
-          <div>
-            <%= message.body %> /
-            <% if message.user == current_user %>
-              <%= message.read ? '既読' : '未読' %>
+<h3>メッセージを送る</3>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <div class="card mb-4">
+        <div class="card-body">
+          <% @messages.each do |message| %>
+            <% if message.body.present? %>
+              <div class="d-flex justify-content-between mb-3">
+                <div>
+                  <strong><%= message.user.name %></strong> <%= message.message_time %>
+                </div>
+                <div>
+                  <%= message.body %> /
+                  <% if message.user == current_user %>
+                    <%= message.read ? '既読' : '未読' %>
+                  <% end %>
+                </div>
+              </div>
             <% end %>
-          </div>
+          <% end %>
+        </div>
+      </div>
+
+      <%= form_with(model: [@conversation, @message], class: 'mb-4') do |f| %>
+        <div class="form-group">
+          <%= f.label :body, 'メッセージ', class: 'sr-only' %>
+          <%= f.text_area :body, class: "form-control", rows: 3 %>
+          <% if @message.errors.any? %>
+            <div class="text-danger">
+              <% @message.errors.full_messages.each do |message| %>
+                <%= message %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+        <%= f.text_field :user_id, value: current_user.id, type: "hidden" %>
+        <div>
+          <%= f.submit "メッセージを送る", class: 'btn btn-primary' %>
         </div>
       <% end %>
-    <% end %>
+
+      <%= link_to '戻る', user_path(current_user), class: 'btn btn-secondary' %>
+    </div>
   </div>
 </div>
-
-<%= form_with(model: [@conversation, @message], class: 'mb-4') do |f| %>
-  <div class="form-group">
-    <%= f.label :body, 'メッセージ', class: 'sr-only' %>
-    <%= f.text_area :body, class: "form-control", rows: 3 %>
-    <% if @message.errors.any? %>
-      <div class="text-danger">
-        <% @message.errors.full_messages.each do |message| %>
-          <%= message %>
-        <% end %>
-      </div>
-    <% end %>
-    </div>
-  <%= f.text_field :user_id, value: current_user.id, type: "hidden" %>
-  <div>
-    <%= f.submit "メッセージを送る", class: 'btn btn-primary' %>
-  </div>
-<% end %>
-
-<%= link_to '戻る', user_path(current_user), class: 'btn btn-secondary' %>
