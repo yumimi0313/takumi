@@ -14,11 +14,7 @@
           <% if user.id != current_user.id %>
             <tr>
               <td>
-                <% if user.role == "cadidate" %>
-                  <%= user.name %>
-                <% elsif user.role == "craftman" %>
-                  <%= user.name %>
-                <% end %>
+              <%= user.name %>
               </td>
               <td>
                 <div class="d-inline-block" id="user_<%= user.id %>">
@@ -42,11 +38,7 @@
         <% @followers.each do |user| %>
           <tr>
             <td>
-              <% if user.role == "cadidate" %>
-                <%= user.name %>
-              <% elsif user.role == "craftman" %>
-                <%= user.name %>
-              <% end %>
+            <%= user.name %>
             </td>
             <td>
               <div class="d-inline-block" id="user_<%= user.id %>">
