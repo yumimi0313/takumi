@@ -64,6 +64,7 @@ ja:
       username: "ユーザ"
       changes: "変更"
       created_at: "日時"
+      last_created: "最終更新"
       item: "アイテム"
       message: "メッセージ"
     actions:

@@ -5,6 +5,12 @@ ja:
       candidate: 後継候補者
       craftman: 匠
       user: ユーザー
+      message: メッセージ
+      conversation: 会話
+      relationship: リレーションシップ
+      active_storage/blob: "添付ファイル"
+      active_storage/attachment: "添付"
+      active_storage/variant_record: "バリアント"
     attributes:
       craftman: 
         category: カテゴリー
