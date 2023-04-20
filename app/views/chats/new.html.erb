@@ -4,7 +4,7 @@
   AIに参考の文章を作ってもらい、文章作成を少しでも容易にするための手段です。</h3>
 
   <%= form_with url: chats_path, local: true, html: {class: 'needs-validation', novalidate: true} do |form| %>
-    <% @questions.each do |question| %>
+    <% @questions.each_with_index do |question, index| %>
       <div class="mb-3">
         <%= form.label "questions[][question]", question, class: 'form-label' %>
         <%= form.hidden_field "questions[][question]", value: question %>
@@ -30,6 +30,7 @@
 
     <div class="mb-3">
       <%= form.submit "文章生成", class: 'btn btn-primary' %>
+      <p>文章生成に少々お時間が必要です...</p>
     </div>
   <% end %>
 

@@ -29,7 +29,7 @@
       <%= form_with(model: [@conversation, @message], class: 'mb-4') do |f| %>
         <div class="form-group">
           <%= f.label :body, 'メッセージ', class: 'sr-only' %>
-          <%= f.text_area :body, class: "form-control", rows: 3 %>
+          <%= f.text_area :body, class: "form-control", rows: 3, placeholder: "例: こんにちは、いかがお過ごしですか？" %>
           <% if @message.errors.any? %>
             <div class="text-danger">
               <% @message.errors.full_messages.each do |message| %>

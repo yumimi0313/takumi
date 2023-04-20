@@ -14,7 +14,9 @@
   </div>
 <% end %>
 
+<% if @craftman.user == current_user %>
 <%= link_to 'AI（chatGPT）に文章作成を手伝ってもらう', new_chat_path, class: 'btn btn-secondary' %>
+<% end %>
 
 <hr class="featurette-divider">
 
@@ -73,7 +75,11 @@
 <hr class="featurette-divider">
 
 <!--  ユーザー関連付けられた製品一覧 -->
-<h2 class="mt-5">製品一覧　<%= link_to '新規登録', new_product_path, class: 'btn btn-sm btn-outline-secondary' %></h2>
+<h2 class="mt-5">製品一覧　
+  <% if @craftman.user == current_user %>
+    <%= link_to '新規登録', new_product_path, class: 'btn btn-sm btn-outline-secondary' %>
+  <% end %>
+</h2>
 <div class="album py-5 bg-light">
   <div class="container">
     <div class="row">
@@ -91,8 +97,10 @@
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                   <%= link_to '詳細', product_path(product), class: 'btn btn-sm btn-outline-secondary' %>
+                  <% if @craftman.user == current_user %>
                   <%= link_to '編集', edit_product_path(product), class: 'btn btn-sm btn-outline-secondary' %>
-                </div>
+                  <% end %>
+                  </div>
               </div>
             </div>
           </div>
