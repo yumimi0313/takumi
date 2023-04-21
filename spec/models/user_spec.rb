@@ -28,18 +28,18 @@ RSpec.describe User, type: :model do
       expect(user).to_not be_valid
     end
 
-    it 'is invalid without an encrypted_password' do
-      user.encrypted_password = nil
+    it 'is invalid without an password' do
+      user.password = nil
       expect(user).to_not be_valid
     end
 
-    it 'is invalid if encrypted_password is too short' do
-      user.encrypted_password = 'a' * 5
+    it 'is invalid if password is too short' do
+      user.password = 'a' * 5
       expect(user).to_not be_valid
     end
 
-    it 'is invalid if encrypted_password is too long' do
-      user.encrypted_password = 'a' * 256
+    it 'is invalid if password is too long' do
+      user.password = 'a' * 256
       expect(user).to_not be_valid
     end
 
