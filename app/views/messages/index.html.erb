@@ -2,7 +2,7 @@
   <%= link_to '以前のメッセージ', '?m=all', class: 'btn btn-link' %>
 <% end %>
 
-<h3>メッセージを送る</3>
+<h3>メッセージを送る</h3>
 <div class="container">
   <div class="row">
     <div class="col-md-8 offset-md-2">
@@ -12,7 +12,7 @@
             <% if message.body.present? %>
               <div class="d-flex justify-content-between mb-3">
                 <div>
-                  <strong><%= message.user.name %></strong> <%= message.message_time %>
+                  <strong><%= message.user.name %></strong> <%= message_time(message.created_at) %>
                 </div>
                 <div>
                   <%= message.body %> /
