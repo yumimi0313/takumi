@@ -19,6 +19,7 @@
 $git clone git@github.com:yumimi0313/takumi.git
 $cd takumi
 $bundle install
+$yarn install 
 $rails db:create && rails db:migrate
 $rails s
 ```
