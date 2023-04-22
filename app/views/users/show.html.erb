@@ -14,7 +14,7 @@
           <% if user.id != current_user.id %>
             <tr>
               <td>
-                <%= user.name %>
+              <%= user.name %>
               </td>
               <td>
               <div class="d-inline-block" id="user_<%= user.id %>">
@@ -40,7 +40,7 @@
         <% @followers.each do |user| %>
           <tr>
             <td>
-              <%= user.name %>
+            <%= user.name %>
             </td>
             <td>
               <div class="d-inline-block" id="user_<%= user.id %>">
