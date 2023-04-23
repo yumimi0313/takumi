@@ -26,7 +26,7 @@
     </div>
     <div class="col-md-5 order-md-1">
     <% if @craftman.images.attached? && @craftman.images.first.present? %>
-    <%= image_tag @craftman.images.first.variant(resize_to_limit: [500, 500]), class: "featurette-image img-fluid mx-auto" %>
+    <%= image_tag @craftman.images.first.variant(resize_to_fill: [500, 500]), class: "featurette-image img-fluid mx-auto" %>
     <% end %>
     </div>
     </div>
@@ -41,7 +41,7 @@
   </div>
   <div class="col-md-5 order-md-1">
     <% if @craftman.images.attached? && @craftman.images.second.present? %>
-      <%= image_tag @craftman.images.second.variant(resize_to_limit: [500, 500]), class: "featurette-image img-fluid mx-auto" %>
+      <%= image_tag @craftman.images.second.variant(resize_to_fill: [500, 500]), class: "featurette-image img-fluid mx-auto" %>
     <% end %>
   </div>
 </div>
@@ -54,7 +54,7 @@
   </div>
   <div class="col-md-5 order-md-1">
     <% if @craftman.images.attached? && @craftman.images.third.present? %>
-      <%= image_tag @craftman.images.third.variant(resize_to_limit: [500, 500]), class: "featurette-image img-fluid mx-auto" %>
+      <%= image_tag @craftman.images.third.variant(resize_to_fill: [500, 500]), class: "featurette-image img-fluid mx-auto" %>
     <% end %>
   </div>
 </div>
@@ -67,7 +67,7 @@
   </div>
   <div class="col-md-5 order-md-1">
     <% if @craftman.images.attached? && @craftman.images.fourth.present? %>
-      <%= image_tag @craftman.images.fourth.variant(resize_to_limit: [500, 500]), class: "featurette-image img-fluid mx-auto" %>
+      <%= image_tag @craftman.images.fourth.variant(resize_to_fill: [500, 500]), class: "featurette-image img-fluid mx-auto" %>
     <% end %>
   </div>
 </div>
@@ -88,7 +88,7 @@
           <div class="card mb-4 shadow-sm">
             <div class="product-images">
               <% if product.images.attached? && product.images.first.present? %>
-                <%= image_tag product.images.first.variant(resize_to_limit: [300, 300]), class: "card-img-top mb-2" %>
+                <%= image_tag product.images.first.variant(resize_to_fill: [300, 300]), class: "card-img-top mb-2" %>
               <% end %>
             </div>
             <div class="card-body">

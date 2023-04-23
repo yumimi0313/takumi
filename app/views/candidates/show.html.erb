@@ -41,7 +41,7 @@
 
           <p>
             <% @candidate.images.each do |image| %>
-              <%= image_tag image.variant(resize_to_limit: [500, 500]), class: "img-thumbnail mr-2 mb-2" %>
+              <%= image_tag image.variant(resize_to_fill: [500, 500]), class: "img-thumbnail mr-2 mb-2" %>
             <% end %>
           </p>
 

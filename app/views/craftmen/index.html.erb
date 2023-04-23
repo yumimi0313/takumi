@@ -23,7 +23,7 @@
         <div class="col-md-4">
           <div class="card mb-4 shadow-sm">
           <% if craftman.images.attached? && craftman.images.first.present? %>
-          <%= image_tag craftman.images.first.variant(resize_to_limit: [350, 250]), class: "card-img-top" %>
+          <%= image_tag craftman.images.first.variant(resize_to_fill: [350, 250]), class: "card-img-top" %>
           <% end %>
             <div class="card-body">
               <h5 class="card-title"><%= craftman.company_name %></h5>
