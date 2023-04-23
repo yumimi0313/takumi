@@ -22,7 +22,7 @@
         <div class="col-md-4">
           <div class="card mb-4 shadow-sm">
           <% if candidate.images.attached? && candidate.images.first.present? %>
-          <%= image_tag candidate.images.first.variant(resize_to_limit: [350, 250]), class: "card-img-top" %>
+          <%= image_tag candidate.images.first.variant(resize_to_fill: [350, 250]), class: "card-img-top" %>
         <% end %>
             <div class="card-body">
               <h5 class="card-title"><%= candidate.name %></h5>
