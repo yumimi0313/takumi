@@ -1,7 +1,9 @@
+/* 上部ナビゲーション */
 .navbar.bg-dark {
   background-color: #7de2f7 !important;
 }
 
+/* TOP */
 .jumbotron-custom-bg {
   background-image: url('../images/background.jpg') !important;
   background-position: center !important;
@@ -22,4 +24,9 @@
 
 .jumbotron .text-muted {
   color: white !important;
+}
+
+/* ユーザー詳細 */
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: #bcf5ad;
 }

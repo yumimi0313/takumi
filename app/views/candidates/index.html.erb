@@ -4,6 +4,7 @@
 <head>
 <title>TSUNAGU</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 </head>
 
 <section class="jumbotron text-center jumbotron-custom-bg2">
@@ -19,7 +20,7 @@
   <div class="container">
     <div class="row">
       <% @candidates.each do |candidate| %>
-        <div class="col-md-4">
+        <div class="col-12 col-sm-6 col-md-4">
           <div class="card mb-4 shadow-sm">
           <% if candidate.images.attached? && candidate.images.first.present? %>
           <%= image_tag candidate.images.first.variant(resize_to_fill: [350, 250]), class: "card-img-top" %>

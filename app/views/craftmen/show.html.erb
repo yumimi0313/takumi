@@ -49,16 +49,15 @@
   </div>
 </div>
 
-
 <div class="row featurette">
-<div class="col-md-5 order-md-1">
-<% if @craftman.images.attached? && @craftman.images.third.present? %>
-<%= image_tag @craftman.images.third.variant(resize_to_fill: [500, 400]), class: "featurette-image img-fluid mx-auto" %>
-<% end %>
-<% if @craftman.images.attached? && @craftman.images.fourth.present? %>
-<%= image_tag @craftman.images.fourth.variant(resize_to_fill: [500, 400]), class: "featurette-image img-fluid mx-auto" %>
-<% end %>
-</div>
+  <div class="col-md-5 order-md-1">
+    <% if @craftman.images.attached? && @craftman.images.third.present? %>
+    <%= image_tag @craftman.images.third.variant(resize_to_fill: [500, 400]), class: "featurette-image img-fluid mx-auto" %>
+    <% end %>
+    <% if @craftman.images.attached? && @craftman.images.fourth.present? %>
+    <%= image_tag @craftman.images.fourth.variant(resize_to_fill: [500, 400]), class: "featurette-image img-fluid mx-auto" %>
+    <% end %>
+  </div>
 </div>
 
 <hr class="featurette-divider">

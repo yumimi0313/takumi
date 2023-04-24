@@ -19,9 +19,14 @@ body {
   display: flex; /* フレックスボックスを使用 */
   align-items: center; /* 垂直方向の中央に配置 */
   justify-content: center; /* 水平方向の中央に配置 */
+  color: white !important;
 }
 
 .card-body {
   height: 210px;
   overflow: auto;
+}
+
+.card-body1 {
+  padding: 20px;
 }

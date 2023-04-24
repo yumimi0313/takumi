@@ -4,6 +4,7 @@
 
 <head>
 <title>TSUNAGU</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 
@@ -20,7 +21,7 @@
   <div class="container">
     <div class="row">
       <% @craftmen.each do |craftman| %>
-        <div class="col-md-4">
+        <div class="col-12 col-sm-6 col-md-4">
           <div class="card mb-4 shadow-sm">
           <% if craftman.images.attached? && craftman.images.first.present? %>
           <%= image_tag craftman.images.first.variant(resize_to_fill: [350, 250]), class: "card-img-top" %>
