@@ -211,6 +211,8 @@ ja:
       profile: プロフィール
       technology: 匠の技術分野
       image: 画像
+      one: "タイトル"
+      other: "タイトル"
     user: 
       title: タイトル
       name: 名前
@@ -220,6 +222,8 @@ ja:
       password: パスワード
       password_confirmation: 確認用パスワード
       remember_me: ログインを記憶
+      one: "タイトル"
+      other: "タイトル"
     candidate:
       interested_category: 興味のあるカテゴリー
       wanted_technology: 希望する技術分野
@@ -227,6 +231,8 @@ ja:
       profile: プロフィール
       image: 画像
       name: 名前
+      one: "タイトル"
+      other: "タイトル"
     product:
       name: 名前
       description: 詳細

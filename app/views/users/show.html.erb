@@ -1,12 +1,12 @@
-<h3>ユーザーの詳細</h3>
+<h4>ユーザー詳細</h4>
 
 <div class="container">
-  <h1 class="my-4"><%= @user.name %></h1>
+  <h2 class="my-4"><%= @user.name %></h2>
   <span id="user_<%= @user.id %>">
     <%= render 'follow_form', user: @user if signed_in? %>
   </span>
 
-  <h3 class="my-4">フォローしている人</h3>
+  <h3 class="my-4">フォロー</h3>
   <div class="table-responsive">
     <table class="table table-striped">
       <tbody>
@@ -33,7 +33,7 @@
     </table>
   </div>
 
-  <h3 class="my-4">フォローされている人</h3>
+  <h3 class="my-4">フォロワー</h3>
   <div class="table-responsive">
     <table class="table table-striped">
       <tbody>
@@ -60,13 +60,7 @@
 
   <!-- 編集ページへのリンクを現在のユーザーの場合のみ表示 -->
   <% if current_user == @user %>
-    <%= link_to 'プロフィールを編集', edit_user_registration_path, class: "btn btn-secondary my-4" %>
+    <%= link_to 'プロフィールを編集', edit_user_registration_path, class: "btn btn-outline-info my-4" %>
   <% end %>
 </div>
-
-<style>
-  .table-striped tbody tr:nth-of-type(odd) {
-    background-color: #ffffe0;
-  }
-</style>
 

@@ -1,3 +1,32 @@
+/* 上部ナビゲーション */
 .navbar.bg-dark {
   background-color: #7de2f7 !important;
+}
+
+/* TOP */
+.jumbotron-custom-bg {
+  background-image: url('../images/background.jpg') !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+}
+
+.jumbotron-custom-bg2 {
+  background-image: url('../images/background2.jpg') !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+}
+
+.jumbotron-heading{
+  color: white !important;
+}
+
+.jumbotron .text-muted {
+  color: white !important;
+}
+
+/* ユーザー詳細 */
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: #bcf5ad;
 }

@@ -8,7 +8,7 @@
 <%= render 'users/follow_form', user: @user if signed_in? %>
 </div>
 
-<% if current_user.following.include?(@user) || current_user.followers.include?(@user) %>
+<% if user_signed_in? && (current_user.following.include?(@user) || current_user.followers.include?(@user)) %>
   <div class="d-inline-block ml-2">
     <%= link_to "メッセージを送る", conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: :post, class: "btn btn-primary" %>
   </div>
@@ -23,10 +23,12 @@
 <div class="row featurette">
   <div class="col-md-7 order-md-2">
     <h2 class="featurette-heading"><%= @craftman.recruit_title %></h2>
+    <p class="lead">会社名: <%= @craftman.company_name %>県名: <%= @craftman.prefecture %><br>市町村名: <%= @craftman.manicipal %></p>
+    <p class="lead"><%= @craftman.recruit_content %></p>
     </div>
     <div class="col-md-5 order-md-1">
     <% if @craftman.images.attached? && @craftman.images.first.present? %>
-    <%= image_tag @craftman.images.first.variant(resize_to_fill: [500, 500]), class: "featurette-image img-fluid mx-auto" %>
+    <%= image_tag @craftman.images.first.variant(resize_to_fill: [500, 400]), class: "featurette-image img-fluid mx-auto" %>
     <% end %>
     </div>
     </div>
@@ -35,45 +37,30 @@
     
     <div class="row featurette">
     <div class="col-md-7 order-md-2">
-    <h2 class="featurette-heading"> <span class="text-muted">会社名</span><%= @craftman.company_name %></h2>
-    <p class="lead">県名: <%= @craftman.prefecture %><br>市町村名: <%= @craftman.manicipal %></p>
-    <p class="lead"><%= @craftman.recruit_content %></p>
+    <h2 class="featurette-heading"><span class="text-muted">プロフィール</span></h2>
+    <p class="lead"><%= @craftman.profile %></p>
+    <h2 class="featurette-heading"><span class="text-muted">匠が持つ技術分野</span></h2>
+    <p class="lead"><%= @craftman.technology %></p>
   </div>
   <div class="col-md-5 order-md-1">
     <% if @craftman.images.attached? && @craftman.images.second.present? %>
-      <%= image_tag @craftman.images.second.variant(resize_to_fill: [500, 500]), class: "featurette-image img-fluid mx-auto" %>
+      <%= image_tag @craftman.images.second.variant(resize_to_fill: [500, 400]), class: "featurette-image img-fluid mx-auto" %>
     <% end %>
   </div>
 </div>
 
-<hr class="featurette-divider">
-
 <div class="row featurette">
-  <div class="col-md-7 order-md-2">
-    <h2 class="featurette-heading"><%= @craftman.profile %> <span class="text-muted">プロフィール</span></h2>
-  </div>
   <div class="col-md-5 order-md-1">
     <% if @craftman.images.attached? && @craftman.images.third.present? %>
-      <%= image_tag @craftman.images.third.variant(resize_to_fill: [500, 500]), class: "featurette-image img-fluid mx-auto" %>
+    <%= image_tag @craftman.images.third.variant(resize_to_fill: [500, 400]), class: "featurette-image img-fluid mx-auto" %>
     <% end %>
-  </div>
-</div>
-
-<hr class="featurette-divider">
-
-<div class="row featurette">
-  <div class="col-md-7 order-md-2">
-    <h2 class="featurette-heading"><%= @craftman.technology %> <span class="text-muted">匠が持つ技術分野</span></h2>
-  </div>
-  <div class="col-md-5 order-md-1">
     <% if @craftman.images.attached? && @craftman.images.fourth.present? %>
-      <%= image_tag @craftman.images.fourth.variant(resize_to_fill: [500, 500]), class: "featurette-image img-fluid mx-auto" %>
+    <%= image_tag @craftman.images.fourth.variant(resize_to_fill: [500, 400]), class: "featurette-image img-fluid mx-auto" %>
     <% end %>
   </div>
 </div>
 
 <hr class="featurette-divider">
-
 <!--  ユーザー関連付けられた製品一覧 -->
 <h2 class="mt-5">製品一覧　
   <% if @craftman.user == current_user %>
@@ -88,7 +75,7 @@
           <div class="card mb-4 shadow-sm">
             <div class="product-images">
               <% if product.images.attached? && product.images.first.present? %>
-                <%= image_tag product.images.first.variant(resize_to_fill: [300, 300]), class: "card-img-top mb-2" %>
+                <%= image_tag product.images.first.variant(resize_to_fill: [300, 200]), class: "card-img-top mb-2" %>
               <% end %>
             </div>
             <div class="card-body">
