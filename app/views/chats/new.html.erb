@@ -1,3 +1,4 @@
+<body>
 <div class="container mt-5">
   <h1>Chat GPTに文章を作ってもらう</h1>
   <h3 class="mb-4">
@@ -24,11 +25,12 @@
       </div>
     <% end %>
 
-    <div class="mb-3">
+    <div class="mb-5">
       <%= form.submit "文章生成", class: 'btn btn-primary' %>
-      <p>文章生成に少々お時間が必要です...</p>
+      <p>文章作成に少々時間が必要です</p>
     </div>
   <% end %>
 
   <%= link_to '戻る', root_path, class: 'btn btn-secondary' %>
 </div>
+</body>
