@@ -9,13 +9,7 @@ Rails.application.routes.draw do
     post 'search', on: :collection, defaults: { format: :json }
     post 'generated_text', on: :collection, defaults: { format: :json }, as: 'generated_text'
   end
-  # resources :chats テスト実装用
-  # get 'search', to: 'chats#search'
   
-  #guest log in
-  # post 'guest_sign_in', to: 'guest_sessions#create'
-  
-
   #devise
   devise_for :users, controllers: {
     registrations: 'registrations',

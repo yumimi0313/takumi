@@ -1,7 +1,9 @@
 <div class="container mt-5">
   <h1>Chat GPTに文章を作ってもらう</h1>
-  <h3 class="mb-4">質問を準備してます、答えはキーワードを入力するなど”簡単に”お答えください。<br>
-  AIに参考の文章を作ってもらい、文章作成を少しでも容易にするための手段です。</h3>
+  <h3 class="mb-4">
+    質問を準備してます、答えはキーワードを入力するなど”簡単に”お答えください。<br>
+    AIに参考の文章を作ってもらい、文章作成を少しでも容易にするための手段です。
+  </h3>
 
   <%= form_with url: chats_path, local: true, html: {class: 'needs-validation', novalidate: true} do |form| %>
     <% @questions.each_with_index do |question, index| %>
@@ -18,7 +20,8 @@
           "例: 地域の伝統を守り続けたい",
           "例: 話題の新作和菓子が売れ行き好調",
           "例: 伝統と革新を両立させる"
-        ][index] %></div>
+        ][index] %>
+      </div>
     <% end %>
 
     <div class="mb-3">

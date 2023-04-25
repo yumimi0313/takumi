@@ -1,51 +1,51 @@
 <!doctype html>
 <html lang="ja" >
 
-<head>
-<title>TSUNAGU</title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-</head>
+  <head>
+    <title>TSUNAGU</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  </head>
 
-<section class="jumbotron text-center jumbotron-custom-bg2">
-<div class="container">
-<h1 class="jumbotron-heading">TSUNAGU</h1>
-<p class="lead text-muted">つなぐ</p>
-</div>
-</section>
+  <section class="jumbotron text-center jumbotron-custom-bg2">
+    <div class="container">
+      <h1 class="jumbotron-heading">TSUNAGU</h1>
+      <p class="lead text-muted">つなぐ</p>
+    </div>
+  </section>
 
-<%= render 'search', q: @q, url: candidates_path %>
+  <%= render 'search', q: @q, url: candidates_path %>
 
-<div class="album py-5 bg-light">
-  <div class="container">
-    <div class="row">
-      <% @candidates.each do |candidate| %>
-        <div class="col-12 col-sm-6 col-md-4">
-          <div class="card mb-4 shadow-sm">
-          <% if candidate.images.attached? && candidate.images.first.present? %>
-          <%= image_tag candidate.images.first.variant(resize_to_fill: [350, 250]), class: "card-img-top" %>
-        <% end %>
-            <div class="card-body1">
-              <h5 class="card-title"><%= candidate.name %></h5>
-              <p class="card-text">
-                <%= candidate.interested_category %> <%= candidate.prefecture %><br>
-                <%= candidate.wanted_technology %><br>
-                <%= candidate.profile %>
-              </p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <%= link_to '詳細', candidate, class: 'btn btn-sm btn-outline-secondary' %>
-                  <% if candidate.user == current_user %>
-                    <%= link_to '編集', edit_candidate_path(candidate), class: 'btn btn-sm btn-outline-secondary' %>
-                    <%= link_to '削除', candidate, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-outline-secondary' %>
-                  <% end %>
+  <div class="album py-5 bg-light">
+    <div class="container">
+      <div class="row">
+        <% @candidates.each do |candidate| %>
+          <div class="col-12 col-sm-6 col-md-4">
+            <div class="card mb-4 shadow-sm">
+              <% if candidate.images.attached? && candidate.images.first.present? %>
+                <%= image_tag candidate.images.first.variant(resize_to_fill: [350, 250]), class: "card-img-top" %>
+              <% end %>
+              <div class="card-body1">
+                <h5 class="card-title"><%= candidate.name %></h5>
+                <p class="card-text">
+                  <%= candidate.interested_category %> <%= candidate.prefecture %><br>
+                  <%= candidate.wanted_technology %><br>
+                  <%= candidate.profile %>
+                </p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <%= link_to '詳細', candidate, class: 'btn btn-sm btn-outline-secondary' %>
+                    <% if candidate.user == current_user %>
+                      <%= link_to '編集', edit_candidate_path(candidate), class: 'btn btn-sm btn-outline-secondary' %>
+                      <%= link_to '削除', candidate, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-outline-secondary' %>
+                    <% end %>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
-</div>
 </html>

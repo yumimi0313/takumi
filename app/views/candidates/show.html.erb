@@ -9,7 +9,6 @@
         <div class="card-body">
           <h2 class="card-title">名前 <%= @candidate.name %></h2>
           <hr>
-          
           <div class="d-inline-block" id="user_<%= @user.id %>">
             <%= render 'users/follow_form', user: @user if signed_in? %>
           </div>
@@ -17,7 +16,7 @@
             <div class="d-inline-block ml-2">
               <%= link_to "メッセージを送る", conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: :post, class: "btn btn-primary" %>
             </div>
-        <% end %>        
+          <% end %>        
 
           <p>
             <strong>興味のあるカテゴリー:</strong>
