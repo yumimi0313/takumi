@@ -3,16 +3,16 @@
 <%= render partial: 'layouts/album' %>
 
 <head>
-<title>TSUNAGU</title>
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <title>TSUNAGU</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 
 <section class="jumbotron text-center jumbotron-custom-bg">
-<div class="container">
-<h1 class="jumbotron-heading">TSUNAGU</h1>
-<p class="lead text-muted">つなぐ</p>
-</div>
+  <div class="container">
+    <h1 class="jumbotron-heading">TSUNAGU</h1>
+    <p class="lead text-muted">つなぐ</p>
+  </div>
 </section>
 
 <%= render 'search', q: @q, url: craftmen_path %>
@@ -23,9 +23,9 @@
       <% @craftmen.each do |craftman| %>
         <div class="col-12 col-sm-6 col-md-4">
           <div class="card mb-4 shadow-sm">
-          <% if craftman.images.attached? && craftman.images.first.present? %>
-          <%= image_tag craftman.images.first.variant(resize_to_fill: [350, 250]), class: "card-img-top" %>
-          <% end %>
+            <% if craftman.images.attached? && craftman.images.first.present? %>
+              <%= image_tag craftman.images.first.variant(resize_to_fill: [350, 250]), class: "card-img-top" %>
+            <% end %>
             <div class="card-body1">
               <h5 class="card-title"><%= craftman.company_name %></h5>
               <p class="card-text">

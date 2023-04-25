@@ -4,8 +4,8 @@
       <div class="col-md-8">
         <% if candidate.errors.any? %>
           <div id="error_explanation" class="alert alert-danger">
-          <h2><%= t("activerecord.errors.template.header", model: Candidate.model_name.human, count: candidate.errors.count) %></h2>
-          <ul>
+            <h2><%= t("activerecord.errors.template.header", model: Candidate.model_name.human, count: candidate.errors.count) %></h2>
+            <ul>
               <% candidate.errors.each do |error| %>
                 <li><%= error.full_message %></li>
               <% end %>
@@ -18,9 +18,9 @@
         </div>
 
         <div class="form-group">
-        <%= form.label :＊名前 %>
-        <%= form.text_field :name, class: "form-control", placeholder: "例: 山田太郎" %>
-        </div>
+          <%= form.label :＊名前 %>
+          <%= form.text_field :name, class: "form-control", placeholder: "例: 山田太郎" %>
+          </div>
 
         <div class="form-group">
           <%= form.label :＊興味のあるカテゴリー %>
@@ -28,9 +28,9 @@
         </div>
 
         <div class="form-group">
-        <%= form.label :希望する技術分野 %>
-        <%= form.text_field :wanted_technology, class: "form-control", placeholder: "例: 和菓子製造、特に餅や最中の製造" %>
-        </div>
+          <%= form.label :希望する技術分野 %>
+          <%= form.text_field :wanted_technology, class: "form-control", placeholder: "例: 和菓子製造、特に餅や最中の製造" %>
+          </div>
 
         <div class="form-group">
           <%= form.label :＊県名 %>
@@ -38,8 +38,8 @@
         </div>
 
         <div class="form-group">
-        <%= form.label :プロフィール %>
-        <%= form.text_area :profile, class: "form-control", placeholder: "例: 東京都出身。和菓子が好きで、伝統的な技術を学びたいと考えています。" %>
+          <%= form.label :プロフィール %>
+          <%= form.text_area :profile, class: "form-control", placeholder: "例: 東京都出身。和菓子が好きで、伝統的な技術を学びたいと考えています。" %>
         </div>
 
         <div class="form-group">

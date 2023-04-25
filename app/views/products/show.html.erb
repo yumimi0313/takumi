@@ -13,17 +13,17 @@
           </p>
 
           <p class="card-text">
-          <% if @product.images.attached? %>
-            <% @product.images.each do |image| %>
-              <%= image_tag image.variant(resize_to_fill: [500, 500]), class: "d-block w-100 img-fluid carousel-image" %>
+            <% if @product.images.attached? %>
+              <% @product.images.each do |image| %>
+                <%= image_tag image.variant(resize_to_fill: [500, 500]), class: "d-block w-100 img-fluid carousel-image" %>
+              <% end %>
             <% end %>
-          <% end %>
-        </p>
+          </p>
 
           <div class="d-flex justify-content-between align-items-center mt-4">
-          <% if @product.user == current_user %>
-            <%= link_to '編集する', edit_product_path(@product), class: 'btn btn-primary' %>
-            <%= link_to '削除', product_path(@product), method: :delete, class: 'btn btn-sm btn-outline-danger' %>
+            <% if @product.user == current_user %>
+              <%= link_to '編集する', edit_product_path(@product), class: 'btn btn-primary' %>
+              <%= link_to '削除', product_path(@product), method: :delete, class: 'btn btn-sm btn-outline-danger' %>
             <% end %>
           </div>
         </div>
