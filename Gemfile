@@ -21,6 +21,7 @@ gem "ruby-openai" #chatGPT
 gem 'dotenv-rails' #環境変数
 gem 'ransack'
 gem 'image_processing'
+gem "aws-sdk-s3", require: false #E3
 gem 'rexml'
 
 gem 'net-smtp'
